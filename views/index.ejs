@@ -1,42 +1,6 @@
 <%- include('partials/header') -%>
 
-<h1 class="text-center text-uppercase py-3">Netflix Originals</h1>
-
-<div class="container">
-  <div class="row p-3 row-cols-2 row-cols-md-3 row-cols-lg-5">
-    <% for( let i = 0; i < netflixMovies.results.length; i++ ) { %>
-
-    <div class="col mb-4">
-      <a href=/netflix/<%= kebabCase(netflixMovies.results[i].name) %>>
-        <img
-        class="poster_path mt-3"
-        src="<%= image + netflixMovies.results[i].poster_path %>"
-        class="card-img-top"
-        alt="<%= netflixMovies.results[i].name %><%= netflixMovies.results[i].title %>"
-      />
-      </a>
-      <div class="card-body">
-        <h5 class="card-title">
-          <a href=/netflix/<%= kebabCase(netflixMovies.results[i].name) %>
-            ><%= netflixMovies.results[i].title %><%=
-            netflixMovies.results[i].name %></a
-          >
-        </h5>
-        <p class="card-text font-weight-bold">
-          <%= netflixMovies.results[i].release_date %><%=
-          netflixMovies.results[i].first_air_date %>
-        </p>
-        <p class="card-text text-muted">
-          Vote average: <%= netflixMovies.results[i].vote_average %>
-        </p>
-      </div>
-    </div>
-
-    <% } %>
-  </div>
-</div>
-
-<h2 class="pl-3">Trending Now</h2>
+<h1 class="text-center text-uppercase py-3">Trending Now</h1>
 
 <div class="container">
   <div class="row p-3 row-cols-2 row-cols-md-3 row-cols-lg-5">
@@ -66,6 +30,42 @@
         </p>
         <p class="card-text text-muted">
           Vote average: <%= trendingMovies.results[i].vote_average %>
+        </p>
+      </div>
+    </div>
+
+    <% } %>
+  </div>
+</div>
+
+<h2 class="pl-3">Netflix Originals</h2>
+
+<div class="container">
+  <div class="row p-3 row-cols-2 row-cols-md-3 row-cols-lg-5">
+    <% for( let i = 0; i < netflixMovies.results.length; i++ ) { %>
+
+    <div class="col mb-4">
+      <a href=/netflix/<%= kebabCase(netflixMovies.results[i].name) %>>
+        <img
+        class="poster_path mt-3"
+        src="<%= image + netflixMovies.results[i].poster_path %>"
+        class="card-img-top"
+        alt="<%= netflixMovies.results[i].name %><%= netflixMovies.results[i].title %>"
+      />
+      </a>
+      <div class="card-body">
+        <h5 class="card-title">
+          <a href=/netflix/<%= kebabCase(netflixMovies.results[i].name) %>
+            ><%= netflixMovies.results[i].title %><%=
+            netflixMovies.results[i].name %></a
+          >
+        </h5>
+        <p class="card-text font-weight-bold">
+          <%= netflixMovies.results[i].release_date %><%=
+          netflixMovies.results[i].first_air_date %>
+        </p>
+        <p class="card-text text-muted">
+          Vote average: <%= netflixMovies.results[i].vote_average %>
         </p>
       </div>
     </div>
