@@ -7,7 +7,6 @@ const rp = require('request-promise')
 dotenv.config()
 
 const app = express()
-const port = 3000
 
 const netflixMovies = []
 const trendingMovies = []
@@ -302,6 +301,6 @@ app.use(function (req, res) {
   res.redirect('/')
 })
 
-app.listen(port, function () {
-  console.log('Server started on port', port)
+app.listen(process.env.PORT, function () {
+  console.log('server is running on port ', process.env.PORT)
 })
