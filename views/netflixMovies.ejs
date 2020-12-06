@@ -1,0 +1,34 @@
+<%- include('partials/header') -%>
+
+<div class="image-wrap">
+  <div class="img-content">
+    <img src="<%= image + requestedMovieBackdropImage %>" alt="" />
+  </div>
+  <div class="overlay"></div>
+</div>
+<div class="banner-content">
+  <div>
+    <div class="row no-gutters">
+      <div class="col-md-4">
+        <img
+          src="<%= image + requestedMoviePosterImage %>"
+          class="card-img poster"
+          alt="<%= requestedMovie %>"
+        />
+      </div>
+      <div class="col-md-8">
+        <div class="card-body">
+          <a
+            target="_blank"
+            href="https://www.google.com/search?q=<%= requestedMovie %>"
+          >
+            <h1 class="card-title"><%= requestedMovie %></h1>
+          </a>
+          <p class="card-text text-left"><%= overview %></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<%- include('partials/footer') -%>

@@ -1,0 +1,36 @@
+<%- include('partials/header') -%>
+
+<div class="image-wrap">
+  <div class="img-content">
+    <img src="<%= image + requestedhorrorMovieBackdropImage %>" alt="" />
+  </div>
+  <div class="overlay"></div>
+</div>
+<div class="banner-content">
+  <div>
+    <div class="row no-gutters">
+      <div class="col-md-4">
+        <img
+          src="<%= image + requestedhorrorMoviePosterImage %>"
+          class="card-img poster"
+          alt="<%= requestedhorrorMovieName %><%= requestedhorrorMovieTitle %>"
+        />
+      </div>
+      <div class="col-md-8">
+        <div class="card-body">
+          <a
+            target="_blank"
+            href="https://www.google.com/search?q=<%= requestedhorrorMovieName %><%= requestedhorrorMovieTitle %> film"
+          >
+            <h1 class="card-title">
+              <%= requestedhorrorMovieName %><%= requestedhorrorMovieTitle %>
+            </h1>
+          </a>
+          <p class="card-text text-left"><%= horrorMovieOverview %></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<%- include('partials/footer') -%>
