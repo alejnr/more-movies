@@ -25,8 +25,11 @@
           </a>
         </h5>
         <p class="card-text font-weight-bold">
-          <%= trendingMovies.results[i].release_date %><%=
-          trendingMovies.results[i].first_air_date %>
+          <%  if (trendingMovies.results[i].release_date) {%>
+            <%=  new Date(trendingMovies.results[i].release_date).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric'}) %>
+          <% } else { %>
+            <%=  new Date(trendingMovies.results[i].first_air_date).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric'})%>
+            <% } %>
         </p>
         <p class="card-text text-muted">
           Vote average: <%= trendingMovies.results[i].vote_average %>
@@ -61,8 +64,11 @@
           >
         </h5>
         <p class="card-text font-weight-bold">
-          <%= netflixMovies.results[i].release_date %><%=
-          netflixMovies.results[i].first_air_date %>
+          <%  if (netflixMovies.results[i].release_date) {%>
+            <%=  new Date(netflixMovies.results[i].release_date).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric'}) %>
+          <% } else { %>
+            <%=  new Date(netflixMovies.results[i].first_air_date).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric'})%>
+            <% } %>
         </p>
         <p class="card-text text-muted">
           Vote average: <%= netflixMovies.results[i].vote_average %>
@@ -99,8 +105,11 @@
           </h5>
         </a>
         <p class="card-text font-weight-bold">
-          <%= topRatedMovies.results[i].release_date %><%=
-          topRatedMovies.results[i].first_air_date %>
+          <%  if (topRatedMovies.results[i].release_date) {%>
+            <%=  new Date(topRatedMovies.results[i].release_date).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric'}) %>
+          <% } else { %>
+            <%=  new Date(topRatedMovies.results[i].first_air_date).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric'})%>
+            <% } %>
         </p>
         <p class="card-text text-muted">
           Vote average: <%= topRatedMovies.results[i].vote_average %>
@@ -137,8 +146,11 @@
           </h5>
         </a>
         <p class="card-text font-weight-bold">
-          <%= actionMovies.results[i].release_date %><%=
-          actionMovies.results[i].first_air_date %>
+          <%  if (actionMovies.results[i].release_date) {%>
+            <%=  new Date(actionMovies.results[i].release_date).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric'}) %>
+          <% } else { %>
+            <%=  new Date(actionMovies.results[i].first_air_date).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric'})%>
+            <% } %>
         </p>
         <p class="card-text text-muted">
           Vote average: <%= actionMovies.results[i].vote_average %>
@@ -175,8 +187,11 @@
           </h5>
         </a>
         <p class="card-text font-weight-bold">
-          <%= comedyMovies.results[i].release_date %><%=
-          comedyMovies.results[i].first_air_date %>
+          <%  if (comedyMovies.results[i].release_date) {%>
+            <%=  new Date(comedyMovies.results[i].release_date).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric'}) %>
+          <% } else { %>
+            <%=  new Date(comedyMovies.results[i].first_air_date).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric'})%>
+            <% } %>
         </p>
         <p class="card-text text-muted">
           Vote average: <%= comedyMovies.results[i].vote_average %>
@@ -213,8 +228,11 @@
           </h5>
         </a>
         <p class="card-text font-weight-bold">
-          <%= romanceMovies.results[i].release_date %><%=
-          romanceMovies.results[i].first_air_date %>
+          <%  if (romanceMovies.results[i].release_date) {%>
+            <%=  new Date(romanceMovies.results[i].release_date).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric'}) %>
+          <% } else { %>
+            <%=  new Date(romanceMovies.results[i].first_air_date).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric'})%>
+            <% } %>
         </p>
         <p class="card-text text-muted">
           Vote average: <%= romanceMovies.results[i].vote_average %>
@@ -251,8 +269,11 @@
           </h5>
         </a>
         <p class="card-text font-weight-bold">
-          <%= horrorMovies.results[i].release_date %><%=
-          horrorMovies.results[i].first_air_date %>
+          <%  if (horrorMovies.results[i].release_date) {%>
+            <%=  new Date(horrorMovies.results[i].release_date).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric'}) %>
+          <% } else { %>
+            <%=  new Date(horrorMovies.results[i].first_air_date).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric'})%>
+            <% } %>
         </p>
         <p class="card-text text-muted">
           Vote average: <%= horrorMovies.results[i].vote_average %>
@@ -289,8 +310,11 @@
           </h5>
         </a>
         <p class="card-text font-weight-bold">
-          <%= documentariesMovies.results[i].release_date %><%=
-          documentariesMovies.results[i].first_air_date %>
+          <%  if (documentariesMovies.results[i].release_date) {%>
+            <%=  new Date(documentariesMovies.results[i].release_date).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric'}) %>
+          <% } else { %>
+            <%=  new Date(documentariesMovies.results[i].first_air_date).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric'})%>
+            <% } %>
         </p>
         <p class="card-text text-muted">
           Vote average: <%= documentariesMovies.results[i].vote_average %>
