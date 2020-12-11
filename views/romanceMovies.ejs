@@ -1,36 +1,43 @@
 <%- include('partials/header') -%>
+  <meta
+    name="description"
+    content="<%= romanceMovieOverview.substring(0, 150) + '...' %>"
+  />
+  <title><%= requestedromanceMovieName %><%= requestedromanceMovieTitle %></title>
 
-<div class="image-wrap">
-  <div class="img-content">
-    <img src="<%= image + requestedromanceMovieBackdropImage %>" alt="" />
-  </div>
-  <div class="overlay"></div>
-</div>
-<div class="banner-content">
-  <div>
-    <div class="row no-gutters">
-      <div class="col-md-4">
-        <img
-          src="<%= image + requestedromanceMoviePosterImage %>"
-          class="card-img poster"
-          alt="<%= requestedromanceMovieName %><%= requestedromanceMovieTitle %>"
-        />
+  <body>
+
+    <div class="image-wrap">
+      <div class="img-content">
+        <img src="<%= image + requestedromanceMovieBackdropImage %>" alt="" />
       </div>
-      <div class="col-md-8">
-        <div class="card-body">
-          <a
-            target="_blank"
-            href="https://www.google.com/search?q=<%= requestedromanceMovieName %><%= requestedromanceMovieTitle %> film"
-          >
-            <h1 class="card-title">
-              <%= requestedromanceMovieName %><%= requestedromanceMovieTitle %>
-            </h1>
-          </a>
-          <p class="card-text text-left"><%= romanceMovieOverview %></p>
+      <div class="overlay"></div>
+    </div>
+    <div class="banner-content">
+      <div>
+        <div class="row no-gutters">
+          <div class="col-md-4">
+            <img
+              src="<%= image + requestedromanceMoviePosterImage %>"
+              class="card-img poster"
+              alt="<%= requestedromanceMovieName %><%= requestedromanceMovieTitle %>"
+            />
+          </div>
+          <div class="col-md-8">
+            <div class="card-body">
+              <a
+                target="_blank"
+                href="https://www.google.com/search?q=<%= requestedromanceMovieName %><%= requestedromanceMovieTitle %> film"
+              >
+                <h1 class="card-title">
+                  <%= requestedromanceMovieName %><%= requestedromanceMovieTitle %>
+                </h1>
+              </a>
+              <p class="card-text text-left"><%= romanceMovieOverview %></p>
+            </div>
+          </div>
         </div>
       </div>
     </div>
-  </div>
-</div>
 
 <%- include('partials/footer') -%>

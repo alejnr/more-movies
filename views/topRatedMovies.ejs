@@ -1,37 +1,43 @@
 <%- include('partials/header') -%>
+  <meta
+    name="description"
+    content="<%= topRatedMovieOverview.substring(0, 150) + '...' %>"
+  />
+  <title><%= requestedtopRatedMovieName %><%= requestedtopRatedMovieTitle%></title>
 
-<div class="image-wrap">
-  <div class="img-content">
-    <img src="<%= image + requestedtopRatedMovieBackdropImage %>" alt="" />
-  </div>
-  <div class="overlay"></div>
-</div>
-<div class="banner-content">
-  <div>
-    <div class="row no-gutters">
-      <div class="col-md-4">
-        <img
-          src="<%= image + requestedtopRatedMoviePosterImage %>"
-          class="card-img poster"
-          alt="<%= requestedtopRatedMovieName %><%= requestedtopRatedMovieTitle %>"
-        />
+  <body>
+
+    <div class="image-wrap">
+      <div class="img-content">
+        <img src="<%= image + requestedtopRatedMovieBackdropImage %>" alt="" />
       </div>
-      <div class="col-md-8">
-        <div class="card-body">
-          <a
-            target="_blank"
-            href="https://www.google.com/search?q=<%= requestedtopRatedMovieName %><%= requestedtopRatedMovieTitle %> film"
-          >
-            <h1 class="card-title">
-              <%= requestedtopRatedMovieName %><%= requestedtopRatedMovieTitle
-              %>
-            </h1>
-          </a>
-          <p class="card-text text-left"><%= topRatedMovieOverview %></p>
+      <div class="overlay"></div>
+    </div>
+    <div class="banner-content">
+      <div>
+        <div class="row no-gutters">
+          <div class="col-md-4">
+            <img
+              src="<%= image + requestedtopRatedMoviePosterImage %>"
+              class="card-img poster"
+              alt="<%= requestedtopRatedMovieName %><%= requestedtopRatedMovieTitle %>"
+            />
+          </div>
+          <div class="col-md-8">
+            <div class="card-body">
+              <a
+                target="_blank"
+                href="https://www.google.com/search?q=<%= requestedtopRatedMovieName %><%= requestedtopRatedMovieTitle %> film"
+              >
+                <h1 class="card-title">
+                  <%= requestedtopRatedMovieName %><%= requestedtopRatedMovieTitle%>
+                </h1>
+              </a>
+              <p class="card-text text-left"><%= topRatedMovieOverview %></p>
+            </div>
+          </div>
         </div>
       </div>
     </div>
-  </div>
-</div>
 
 <%- include('partials/footer') -%>

@@ -1,36 +1,43 @@
 <%- include('partials/header') -%>
+  <meta
+    name="description"
+    content="<%= actionMovieOverview.substring(0, 150) + '...' %>"
+  />
+  <title><%= requestedactionMovieName %><%= requestedactionMovieTitle %></title>
 
-<div class="image-wrap">
-  <div class="img-content">
-    <img src="<%= image + requestedactionMovieBackdropImage %>" alt="" />
-  </div>
-  <div class="overlay"></div>
-</div>
-<div class="banner-content">
-  <div>
-    <div class="row no-gutters">
-      <div class="col-md-4">
-        <img
-          src="<%= image + requestedactionMoviePosterImage %>"
-          class="card-img poster"
-          alt="<%= requestedactionMovieName %><%= requestedactionMovieTitle %>"
-        />
+  <body>
+
+    <div class="image-wrap">
+      <div class="img-content">
+        <img src="<%= image + requestedactionMovieBackdropImage %>" alt="" />
       </div>
-      <div class="col-md-8">
-        <div class="card-body">
-          <a
-            target="_blank"
-            href="https://www.google.com/search?q=<%= requestedactionMovieName %><%= requestedactionMovieTitle %> film"
-          >
-            <h1 class="card-title">
-              <%= requestedactionMovieName %><%= requestedactionMovieTitle %>
-            </h1>
-          </a>
-          <p class="card-text text-left"><%= actionMovieOverview %></p>
+      <div class="overlay"></div>
+    </div>
+    <div class="banner-content">
+      <div>
+        <div class="row no-gutters">
+          <div class="col-md-4">
+            <img
+              src="<%= image + requestedactionMoviePosterImage %>"
+              class="card-img poster"
+              alt="<%= requestedactionMovieName %><%= requestedactionMovieTitle %>"
+            />
+          </div>
+          <div class="col-md-8">
+            <div class="card-body">
+              <a
+                target="_blank"
+                href="https://www.google.com/search?q=<%= requestedactionMovieName %><%= requestedactionMovieTitle %> film"
+              >
+                <h1 class="card-title">
+                  <%= requestedactionMovieName %><%= requestedactionMovieTitle %>
+                </h1>
+              </a>
+              <p class="card-text text-left"><%= actionMovieOverview %></p>
+            </div>
+          </div>
         </div>
       </div>
     </div>
-  </div>
-</div>
 
 <%- include('partials/footer') -%>
