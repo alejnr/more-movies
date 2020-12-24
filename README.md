@@ -3,7 +3,7 @@
 
 This website allow you to see Trending, Netfix, Action, Top Rated, Comedy, Romance, Horror, Documentaries Movies
 
-![screenshot](https://alexmenlah.com/images/moreMovies.png)
+![screenshot](https://alexmenlah.ga/assets/images/projects/moreMovies.png)
 
 ## Endpoint
 
