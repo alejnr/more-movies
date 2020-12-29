@@ -94,6 +94,7 @@ app.get('/netflix/:netflixName', function (req, res) {
       }
     }
   })
+  res.redirect('/')
 })
 
 app.get('/trending/:trendingName', function (req, res) {
@@ -125,6 +126,7 @@ app.get('/trending/:trendingName', function (req, res) {
       }
     }
   })
+  res.redirect('/')
 })
 
 app.get('/top/:topName', function (req, res) {
@@ -156,6 +158,7 @@ app.get('/top/:topName', function (req, res) {
       }
     }
   })
+  res.redirect('/')
 })
 
 app.get('/action/:actionName', function (req, res) {
@@ -182,6 +185,7 @@ app.get('/action/:actionName', function (req, res) {
       }
     }
   })
+  res.redirect('/')
 })
 
 app.get('/comedy/:comedyName', function (req, res) {
@@ -208,6 +212,7 @@ app.get('/comedy/:comedyName', function (req, res) {
       }
     }
   })
+  res.redirect('/')
 })
 
 app.get('/romance/:romanceName', function (req, res) {
@@ -234,6 +239,7 @@ app.get('/romance/:romanceName', function (req, res) {
       }
     }
   })
+  res.redirect('/')
 })
 
 app.get('/horror/:horrorName', function (req, res) {
@@ -260,6 +266,7 @@ app.get('/horror/:horrorName', function (req, res) {
       }
     }
   })
+  res.redirect('/')
 })
 
 app.get('/documentaries/:documentariesName', function (req, res) {
@@ -295,6 +302,7 @@ app.get('/documentaries/:documentariesName', function (req, res) {
       }
     }
   })
+  res.redirect('/')
 })
 
 app.use(function (req, res) {
