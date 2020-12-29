@@ -28,15 +28,11 @@
           </div>
           <div class="col-md-8">
             <div class="card-body">
-              <a
-                target="_blank"
-                href="https://www.google.com/search?q=<%= requestedTrendingMovieName %><%= requestedTrendingMovieTitle %> film"
-              >
-                <h1 class="card-title">
-                  <%= requestedTrendingMovieName %><%=
-                  requestedTrendingMovieTitle %>
-                </h1>
-              </a>
+              <h1 class="card-title">
+                <a target="_blank" href="https://www.google.com/search?q=<%= requestedTrendingMovieName %><%= requestedTrendingMovieTitle %>">
+                  <%= requestedTrendingMovieName %><%= requestedTrendingMovieTitle %>
+                </a>
+              </h1>
               <p class="card-text text-left"><%= trendingOverview %></p>
             </div>
           </div>

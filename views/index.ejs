@@ -13,36 +13,38 @@
       <div class="row p-3 row-cols-2 row-cols-md-3 row-cols-lg-5">
         <% for( let i = 0; i < trendingMovies.results.length; i++ ) { %>
 
-        <div class="col mb-4">
-          <a href=/trending/<%= kebabCase(trendingMovies.results[i].title) %><%=
-            kebabCase(trendingMovies.results[i].name) %>>
-            <img
-            class="poster_path mt-3"
-            src="<%= image + trendingMovies.results[i].poster_path %>"
-            class="card-img-top"
-            alt="<%= trendingMovies.results[i].name %><%= actionMovies.results[i].title %>"
-          />
-          </a>
-          <div class="card-body">
-            <h5 class="card-title">
-              <a href=/trending/<%= kebabCase(trendingMovies.results[i].title) %><%=
-                kebabCase(trendingMovies.results[i].name) %>
-                ><%= trendingMovies.results[i].title %><%=
-                trendingMovies.results[i].name %>
-              </a>
-            </h5>
-            <p class="card-text font-weight-bold">
-              <%  if (trendingMovies.results[i].release_date) {%>
-                <%=  new Date(trendingMovies.results[i].release_date).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric'}) %>
-              <% } else { %>
-                <%=  new Date(trendingMovies.results[i].first_air_date).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric'})%>
-                <% } %>
-            </p>
-            <p class="card-text text-muted">
-              Vote average: <%= trendingMovies.results[i].vote_average %>
-            </p>
+          <% if (trendingMovies.results[i].poster_path) { %>
+          <div class="col mb-4">
+            <a href=/trending/<%= kebabCase(trendingMovies.results[i].title) %><%=
+              kebabCase(trendingMovies.results[i].name) %>>
+              <img
+              class="poster_path mt-3"
+              src="<%= image + trendingMovies.results[i].poster_path %>"
+              class="card-img-top"
+              alt="<%= trendingMovies.results[i].name %><%= actionMovies.results[i].title %>"
+            />
+            </a>
+            <div class="card-body">
+              <h5 class="card-title text-truncate">
+                <a href=/trending/<%= kebabCase(trendingMovies.results[i].title) %><%=
+                  kebabCase(trendingMovies.results[i].name) %>
+                  ><%= trendingMovies.results[i].title %><%=
+                  trendingMovies.results[i].name %>
+                </a>
+              </h5>
+              <p class="card-text font-weight-bold">
+                <%  if (trendingMovies.results[i].release_date) {%>
+                  <%=  new Date(trendingMovies.results[i].release_date).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric'}) %>
+                <% } else { %>
+                  <%=  new Date(trendingMovies.results[i].first_air_date).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric'})%>
+                  <% } %>
+              </p>
+              <p class="card-text text-muted">
+                Vote average: <%= trendingMovies.results[i].vote_average %>
+              </p>
+            </div>
           </div>
-        </div>
+          <% } %>
 
         <% } %>
       </div>
@@ -54,34 +56,36 @@
       <div class="row p-3 row-cols-2 row-cols-md-3 row-cols-lg-5">
         <% for( let i = 0; i < netflixMovies.results.length; i++ ) { %>
 
-        <div class="col mb-4">
-          <a href=/netflix/<%= kebabCase(netflixMovies.results[i].name) %>>
-            <img
-            class="poster_path mt-3"
-            src="<%= image + netflixMovies.results[i].poster_path %>"
-            class="card-img-top"
-            alt="<%= netflixMovies.results[i].name %><%= netflixMovies.results[i].title %>"
-          />
-          </a>
-          <div class="card-body">
-            <h5 class="card-title">
-              <a href=/netflix/<%= kebabCase(netflixMovies.results[i].name) %>
-                ><%= netflixMovies.results[i].title %><%=
-                netflixMovies.results[i].name %></a
-              >
-            </h5>
-            <p class="card-text font-weight-bold">
-              <%  if (netflixMovies.results[i].release_date) {%>
-                <%=  new Date(netflixMovies.results[i].release_date).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric'}) %>
-              <% } else { %>
-                <%=  new Date(netflixMovies.results[i].first_air_date).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric'})%>
-                <% } %>
-            </p>
-            <p class="card-text text-muted">
-              Vote average: <%= netflixMovies.results[i].vote_average %>
-            </p>
+       <% if (netflixMovies.results[i].poster_path) { %>
+          <div class="col mb-4">
+            <a href=/netflix/<%= kebabCase(netflixMovies.results[i].name) %>>
+              <img
+              class="poster_path mt-3"
+              src="<%= image + netflixMovies.results[i].poster_path %>"
+              class="card-img-top"
+              alt="<%= netflixMovies.results[i].name %><%= netflixMovies.results[i].title %>"
+            />
+            </a>
+            <div class="card-body">
+              <h5 class="card-title text-truncate">
+                <a href=/netflix/<%= kebabCase(netflixMovies.results[i].name) %>
+                  ><%= netflixMovies.results[i].title %><%=
+                  netflixMovies.results[i].name %></a
+                >
+              </h5>
+              <p class="card-text font-weight-bold">
+                <%  if (netflixMovies.results[i].release_date) {%>
+                  <%=  new Date(netflixMovies.results[i].release_date).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric'}) %>
+                <% } else { %>
+                  <%=  new Date(netflixMovies.results[i].first_air_date).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric'})%>
+                  <% } %>
+              </p>
+              <p class="card-text text-muted">
+                Vote average: <%= netflixMovies.results[i].vote_average %>
+              </p>
+            </div>
           </div>
-        </div>
+       <% } %>
 
         <% } %>
       </div>
@@ -93,36 +97,38 @@
       <div class="row p-3 row-cols-2 row-cols-md-3 row-cols-lg-5">
         <% for( let i = 0; i < topRatedMovies.results.length; i++ ) { %>
 
-        <div class="col mb-4">
-          <a href=/top/<%= kebabCase(topRatedMovies.results[i].title) %><%=
-            kebabCase(topRatedMovies.results[i].name) %>>
-            <img
-            class="poster_path mt-3"
-            src="<%= image + topRatedMovies.results[i].poster_path %>"
-            class="card-img-top"
-            alt="<%= topRatedMovies.results[i].name %><%= actionMovies.results[i].title %>"
-          />
-          </a>
-          <div class="card-body">
+       <% if (topRatedMovies.results[i].poster_path) { %>
+          <div class="col mb-4">
             <a href=/top/<%= kebabCase(topRatedMovies.results[i].title) %><%=
               kebabCase(topRatedMovies.results[i].name) %>>
-              <h5 class="card-title">
-                <%= topRatedMovies.results[i].title %><%=
-                topRatedMovies.results[i].name %>
-              </h5>
+              <img
+              class="poster_path mt-3"
+              src="<%= image + topRatedMovies.results[i].poster_path %>"
+              class="card-img-top"
+              alt="<%= topRatedMovies.results[i].name %><%= actionMovies.results[i].title %>"
+            />
             </a>
-            <p class="card-text font-weight-bold">
-              <%  if (topRatedMovies.results[i].release_date) {%>
-                <%=  new Date(topRatedMovies.results[i].release_date).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric'}) %>
-              <% } else { %>
-                <%=  new Date(topRatedMovies.results[i].first_air_date).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric'})%>
-                <% } %>
-            </p>
-            <p class="card-text text-muted">
-              Vote average: <%= topRatedMovies.results[i].vote_average %>
-            </p>
+            <div class="card-body">
+              <a href=/top/<%= kebabCase(topRatedMovies.results[i].title) %><%=
+                kebabCase(topRatedMovies.results[i].name) %>>
+                <h5 class="card-title text-truncate">
+                  <%= topRatedMovies.results[i].title %><%=
+                  topRatedMovies.results[i].name %>
+                </h5>
+              </a>
+              <p class="card-text font-weight-bold">
+                <%  if (topRatedMovies.results[i].release_date) {%>
+                  <%=  new Date(topRatedMovies.results[i].release_date).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric'}) %>
+                <% } else { %>
+                  <%=  new Date(topRatedMovies.results[i].first_air_date).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric'})%>
+                  <% } %>
+              </p>
+              <p class="card-text text-muted">
+                Vote average: <%= topRatedMovies.results[i].vote_average %>
+              </p>
+            </div>
           </div>
-        </div>
+       <% } %>
 
         <% } %>
       </div>
@@ -134,36 +140,38 @@
       <div class="row p-3 row-cols-2 row-cols-md-3 row-cols-lg-5">
         <% for( let i = 0; i < actionMovies.results.length; i++ ) { %>
 
-        <div class="col mb-4">
-          <a href=/action/<%= kebabCase(actionMovies.results[i].title) %><%=
-            kebabCase(actionMovies.results[i].name) %>>
-            <img
-            class="poster_path mt-3"
-            src="<%= image + actionMovies.results[i].poster_path %>"
-            class="card-img-top"
-            alt="<%= actionMovies.results[i].name %><%= actionMovies.results[i].title %>"
-          />
-          </a>
-          <div class="card-body">
+       <% if (actionMovies.results[i].poster_path) { %>
+          <div class="col mb-4">
             <a href=/action/<%= kebabCase(actionMovies.results[i].title) %><%=
               kebabCase(actionMovies.results[i].name) %>>
-              <h5 class="card-title">
-                <%= actionMovies.results[i].title %><%= actionMovies.results[i].name
-                %>
-              </h5>
+              <img
+              class="poster_path mt-3"
+              src="<%= image + actionMovies.results[i].poster_path %>"
+              class="card-img-top"
+              alt="<%= actionMovies.results[i].name %><%= actionMovies.results[i].title %>"
+            />
             </a>
-            <p class="card-text font-weight-bold">
-              <%  if (actionMovies.results[i].release_date) {%>
-                <%=  new Date(actionMovies.results[i].release_date).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric'}) %>
-              <% } else { %>
-                <%=  new Date(actionMovies.results[i].first_air_date).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric'})%>
-                <% } %>
-            </p>
-            <p class="card-text text-muted">
-              Vote average: <%= actionMovies.results[i].vote_average %>
-            </p>
+            <div class="card-body">
+              <a href=/action/<%= kebabCase(actionMovies.results[i].title) %><%=
+                kebabCase(actionMovies.results[i].name) %>>
+                <h5 class="card-title text-truncate">
+                  <%= actionMovies.results[i].title %><%= actionMovies.results[i].name
+                  %>
+                </h5>
+              </a>
+              <p class="card-text font-weight-bold">
+                <%  if (actionMovies.results[i].release_date) {%>
+                  <%=  new Date(actionMovies.results[i].release_date).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric'}) %>
+                <% } else { %>
+                  <%=  new Date(actionMovies.results[i].first_air_date).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric'})%>
+                  <% } %>
+              </p>
+              <p class="card-text text-muted">
+                Vote average: <%= actionMovies.results[i].vote_average %>
+              </p>
+            </div>
           </div>
-        </div>
+       <% } %>
 
         <% } %>
       </div>
@@ -175,36 +183,38 @@
       <div class="row p-3 row-cols-2 row-cols-md-3 row-cols-lg-5">
         <% for( let i = 0; i < comedyMovies.results.length; i++ ) { %>
 
-        <div class="col mb-4">
-          <a href=/comedy/<%= kebabCase(comedyMovies.results[i].title) %><%=
-            kebabCase(comedyMovies.results[i].name) %>>
-            <img
-            class="poster_path mt-3"
-            src="<%= image + comedyMovies.results[i].poster_path %>"
-            class="card-img-top"
-            alt="<%= comedyMovies.results[i].name %><%= comedyMovies.results[i].title %>"
-          />
-          </a>
-          <div class="card-body">
+       <% if (comedyMovies.results[i].poster_path) { %>
+          <div class="col mb-4">
             <a href=/comedy/<%= kebabCase(comedyMovies.results[i].title) %><%=
               kebabCase(comedyMovies.results[i].name) %>>
-              <h5 class="card-title">
-                <%= comedyMovies.results[i].title %><%= comedyMovies.results[i].name
-                %>
-              </h5>
+              <img
+              class="poster_path mt-3"
+              src="<%= image + comedyMovies.results[i].poster_path %>"
+              class="card-img-top"
+              alt="<%= comedyMovies.results[i].name %><%= comedyMovies.results[i].title %>"
+            />
             </a>
-            <p class="card-text font-weight-bold">
-              <%  if (comedyMovies.results[i].release_date) {%>
-                <%=  new Date(comedyMovies.results[i].release_date).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric'}) %>
-              <% } else { %>
-                <%=  new Date(comedyMovies.results[i].first_air_date).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric'})%>
-                <% } %>
-            </p>
-            <p class="card-text text-muted">
-              Vote average: <%= comedyMovies.results[i].vote_average %>
-            </p>
+            <div class="card-body">
+              <a href=/comedy/<%= kebabCase(comedyMovies.results[i].title) %><%=
+                kebabCase(comedyMovies.results[i].name) %>>
+                <h5 class="card-title text-truncate">
+                  <%= comedyMovies.results[i].title %><%= comedyMovies.results[i].name
+                  %>
+                </h5>
+              </a>
+              <p class="card-text font-weight-bold">
+                <%  if (comedyMovies.results[i].release_date) {%>
+                  <%=  new Date(comedyMovies.results[i].release_date).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric'}) %>
+                <% } else { %>
+                  <%=  new Date(comedyMovies.results[i].first_air_date).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric'})%>
+                  <% } %>
+              </p>
+              <p class="card-text text-muted">
+                Vote average: <%= comedyMovies.results[i].vote_average %>
+              </p>
+            </div>
           </div>
-        </div>
+       <% } %>
 
         <% } %>
       </div>
@@ -216,36 +226,38 @@
       <div class="row p-3 row-cols-2 row-cols-md-3 row-cols-lg-5">
         <% for( let i = 0; i < romanceMovies.results.length; i++ ) { %>
 
-        <div class="col mb-4">
-          <a href=/romance/<%= kebabCase(romanceMovies.results[i].title) %><%=
-            kebabCase(romanceMovies.results[i].name) %>>
-            <img
-            class="poster_path mt-3"
-            src="<%= image + romanceMovies.results[i].poster_path %>"
-            class="card-img-top"
-            alt="<%= romanceMovies.results[i].name %><%= romanceMovies.results[i].title %>"
-          />
-          </a>
-          <div class="card-body">
+          <%  if (romanceMovies.results[i].poster_path) { %>
+          <div class="col mb-4">
             <a href=/romance/<%= kebabCase(romanceMovies.results[i].title) %><%=
               kebabCase(romanceMovies.results[i].name) %>>
-              <h5 class="card-title">
-                <%= romanceMovies.results[i].title %><%= romanceMovies.results[i].name
-                %>
-              </h5>
+              <img
+              class="poster_path mt-3"
+              src="<%= image + romanceMovies.results[i].poster_path %>"
+              class="card-img-top"
+              alt="<%= romanceMovies.results[i].name %><%= romanceMovies.results[i].title %>"
+            />
             </a>
-            <p class="card-text font-weight-bold">
-              <%  if (romanceMovies.results[i].release_date) {%>
-                <%=  new Date(romanceMovies.results[i].release_date).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric'}) %>
-              <% } else { %>
-                <%=  new Date(romanceMovies.results[i].first_air_date).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric'})%>
-                <% } %>
-            </p>
-            <p class="card-text text-muted">
-              Vote average: <%= romanceMovies.results[i].vote_average %>
-            </p>
+            <div class="card-body">
+              <a href=/romance/<%= kebabCase(romanceMovies.results[i].title) %><%=
+                kebabCase(romanceMovies.results[i].name) %>>
+                <h5 class="card-title text-truncate">
+                  <%= romanceMovies.results[i].title %><%= romanceMovies.results[i].name
+                  %>
+                </h5>
+              </a>
+              <p class="card-text font-weight-bold">
+                <%  if (romanceMovies.results[i].release_date) {%>
+                  <%=  new Date(romanceMovies.results[i].release_date).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric'}) %>
+                <% } else { %>
+                  <%=  new Date(romanceMovies.results[i].first_air_date).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric'})%>
+                  <% } %>
+              </p>
+              <p class="card-text text-muted">
+                Vote average: <%= romanceMovies.results[i].vote_average %>
+              </p>
+            </div>
           </div>
-        </div>
+          <% } %>
 
         <% } %>
       </div>
@@ -257,7 +269,8 @@
       <div class="row p-3 row-cols-2 row-cols-md-3 row-cols-lg-5">
         <% for( let i = 0; i < horrorMovies.results.length; i++ ) { %>
 
-        <div class="col mb-4">
+        <% if (horrorMovies.results[i].poster_path) { %>
+          <div class="col mb-4">
           <a href=/horror/<%= kebabCase(horrorMovies.results[i].title) %><%=
             kebabCase(horrorMovies.results[i].name) %>>
             <img
@@ -270,7 +283,7 @@
           <div class="card-body">
             <a href=/horror/<%= kebabCase(horrorMovies.results[i].title) %><%=
               kebabCase(horrorMovies.results[i].name) %>>
-              <h5 class="card-title">
+              <h5 class="card-title text-truncate">
                 <%= horrorMovies.results[i].title %><%= horrorMovies.results[i].name
                 %>
               </h5>
@@ -287,6 +300,7 @@
             </p>
           </div>
         </div>
+      <% } %>
 
         <% } %>
       </div>
@@ -298,36 +312,38 @@
       <div class="row p-3 row-cols-2 row-cols-md-3 row-cols-lg-5">
         <% for( let i = 0; i < documentariesMovies.results.length; i++ ) { %>
 
-        <div class="col mb-4">
-          <a href=/documentaries/<%= kebabCase(documentariesMovies.results[i].title) %><%=
-            kebabCase(documentariesMovies.results[i].name) %>>
-            <img
-            class="poster_path mt-3"
-            src="<%= image + documentariesMovies.results[i].poster_path %>"
-            class="card-img-top"
-            alt="<%= documentariesMovies.results[i].name %><%= documentariesMovies.results[i].title %>"
-          />
-          </a>
-          <div class="card-body">
+          <% if (documentariesMovies.results[i].poster_path) { %>
+          <div class="col mb-4">
             <a href=/documentaries/<%= kebabCase(documentariesMovies.results[i].title) %><%=
               kebabCase(documentariesMovies.results[i].name) %>>
-              <h5 class="card-title">
-                <%= documentariesMovies.results[i].title %><%=
-                documentariesMovies.results[i].name %>
-              </h5>
+              <img
+              class="poster_path mt-3"
+              src="<%= image + documentariesMovies.results[i].poster_path %>"
+              class="card-img-top"
+              alt="<%= documentariesMovies.results[i].name %><%= documentariesMovies.results[i].title %>"
+            />
             </a>
-            <p class="card-text font-weight-bold">
-              <%  if (documentariesMovies.results[i].release_date) {%>
-                <%=  new Date(documentariesMovies.results[i].release_date).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric'}) %>
-              <% } else { %>
-                <%=  new Date(documentariesMovies.results[i].first_air_date).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric'})%>
-                <% } %>
-            </p>
-            <p class="card-text text-muted">
-              Vote average: <%= documentariesMovies.results[i].vote_average %>
-            </p>
+            <div class="card-body">
+              <a href=/documentaries/<%= kebabCase(documentariesMovies.results[i].title) %><%=
+                kebabCase(documentariesMovies.results[i].name) %>>
+                <h5 class="card-title text-truncate">
+                  <%= documentariesMovies.results[i].title %><%=
+                  documentariesMovies.results[i].name %>
+                </h5>
+              </a>
+              <p class="card-text font-weight-bold">
+                <%  if (documentariesMovies.results[i].release_date) {%>
+                  <%=  new Date(documentariesMovies.results[i].release_date).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric'}) %>
+                <% } else { %>
+                  <%=  new Date(documentariesMovies.results[i].first_air_date).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric'})%>
+                  <% } %>
+              </p>
+              <p class="card-text text-muted">
+                Vote average: <%= documentariesMovies.results[i].vote_average %>
+              </p>
+            </div>
           </div>
-        </div>
+          <% }%>
 
         <% } %>
       </div>
