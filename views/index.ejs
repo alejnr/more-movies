@@ -18,12 +18,13 @@
             <a href=/trending/<%= kebabCase(trendingMovies.results[i].title) %><%=
               kebabCase(trendingMovies.results[i].name) %>>
               <img
-              class="poster_path mt-3"
+              class="poster_path mt-3 mb-3"
               src="<%= image + trendingMovies.results[i].poster_path %>"
               class="card-img-top"
               alt="<%= trendingMovies.results[i].name %><%= actionMovies.results[i].title %>"
             />
             </a>
+            <span class="badge bg-primary rounded-pill"><%= trendingMovies.results[i].vote_average %></span>
             <div class="card-body">
               <h5 class="card-title text-truncate">
                 <a href=/trending/<%= kebabCase(trendingMovies.results[i].title) %><%=
@@ -38,9 +39,6 @@
                 <% } else { %>
                   <%=  new Date(trendingMovies.results[i].first_air_date).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric'})%>
                   <% } %>
-              </p>
-              <p class="card-text text-muted">
-                Vote average: <%= trendingMovies.results[i].vote_average %>
               </p>
             </div>
           </div>
@@ -60,12 +58,13 @@
           <div class="col mb-4">
             <a href=/netflix/<%= kebabCase(netflixMovies.results[i].name) %>>
               <img
-              class="poster_path mt-3"
+              class="poster_path mt-3 mb-3"
               src="<%= image + netflixMovies.results[i].poster_path %>"
               class="card-img-top"
               alt="<%= netflixMovies.results[i].name %><%= netflixMovies.results[i].title %>"
             />
             </a>
+            <span class="badge bg-primary rounded-pill"><%= netflixMovies.results[i].vote_average %></span>
             <div class="card-body">
               <h5 class="card-title text-truncate">
                 <a href=/netflix/<%= kebabCase(netflixMovies.results[i].name) %>
@@ -79,9 +78,6 @@
                 <% } else { %>
                   <%=  new Date(netflixMovies.results[i].first_air_date).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric'})%>
                   <% } %>
-              </p>
-              <p class="card-text text-muted">
-                Vote average: <%= netflixMovies.results[i].vote_average %>
               </p>
             </div>
           </div>
@@ -102,12 +98,13 @@
             <a href=/top/<%= kebabCase(topRatedMovies.results[i].title) %><%=
               kebabCase(topRatedMovies.results[i].name) %>>
               <img
-              class="poster_path mt-3"
+              class="poster_path mt-3 mb-3"
               src="<%= image + topRatedMovies.results[i].poster_path %>"
               class="card-img-top"
-              alt="<%= topRatedMovies.results[i].name %><%= actionMovies.results[i].title %>"
+              alt="<%= topRatedMovies.results[i].name %><%= topRatedMovies.results[i].title %>"
             />
             </a>
+            <span class="badge bg-primary rounded-pill"><%= topRatedMovies.results[i].vote_average %></span>
             <div class="card-body">
               <a href=/top/<%= kebabCase(topRatedMovies.results[i].title) %><%=
                 kebabCase(topRatedMovies.results[i].name) %>>
@@ -122,9 +119,6 @@
                 <% } else { %>
                   <%=  new Date(topRatedMovies.results[i].first_air_date).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric'})%>
                   <% } %>
-              </p>
-              <p class="card-text text-muted">
-                Vote average: <%= topRatedMovies.results[i].vote_average %>
               </p>
             </div>
           </div>
@@ -145,12 +139,13 @@
             <a href=/action/<%= kebabCase(actionMovies.results[i].title) %><%=
               kebabCase(actionMovies.results[i].name) %>>
               <img
-              class="poster_path mt-3"
+              class="poster_path mt-3 mb-3"
               src="<%= image + actionMovies.results[i].poster_path %>"
               class="card-img-top"
               alt="<%= actionMovies.results[i].name %><%= actionMovies.results[i].title %>"
             />
             </a>
+            <span class="badge bg-primary rounded-pill"><%= actionMovies.results[i].vote_average %></span>
             <div class="card-body">
               <a href=/action/<%= kebabCase(actionMovies.results[i].title) %><%=
                 kebabCase(actionMovies.results[i].name) %>>
@@ -165,9 +160,6 @@
                 <% } else { %>
                   <%=  new Date(actionMovies.results[i].first_air_date).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric'})%>
                   <% } %>
-              </p>
-              <p class="card-text text-muted">
-                Vote average: <%= actionMovies.results[i].vote_average %>
               </p>
             </div>
           </div>
@@ -188,12 +180,13 @@
             <a href=/comedy/<%= kebabCase(comedyMovies.results[i].title) %><%=
               kebabCase(comedyMovies.results[i].name) %>>
               <img
-              class="poster_path mt-3"
+              class="poster_path mt-3 mb-3"
               src="<%= image + comedyMovies.results[i].poster_path %>"
               class="card-img-top"
               alt="<%= comedyMovies.results[i].name %><%= comedyMovies.results[i].title %>"
             />
             </a>
+            <span class="badge bg-primary rounded-pill"><%= comedyMovies.results[i].vote_average %></span>
             <div class="card-body">
               <a href=/comedy/<%= kebabCase(comedyMovies.results[i].title) %><%=
                 kebabCase(comedyMovies.results[i].name) %>>
@@ -208,9 +201,6 @@
                 <% } else { %>
                   <%=  new Date(comedyMovies.results[i].first_air_date).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric'})%>
                   <% } %>
-              </p>
-              <p class="card-text text-muted">
-                Vote average: <%= comedyMovies.results[i].vote_average %>
               </p>
             </div>
           </div>
@@ -231,12 +221,13 @@
             <a href=/romance/<%= kebabCase(romanceMovies.results[i].title) %><%=
               kebabCase(romanceMovies.results[i].name) %>>
               <img
-              class="poster_path mt-3"
+              class="poster_path mt-3 mb-3"
               src="<%= image + romanceMovies.results[i].poster_path %>"
               class="card-img-top"
               alt="<%= romanceMovies.results[i].name %><%= romanceMovies.results[i].title %>"
             />
             </a>
+            <span class="badge bg-primary rounded-pill"><%= romanceMovies.results[i].vote_average %></span>
             <div class="card-body">
               <a href=/romance/<%= kebabCase(romanceMovies.results[i].title) %><%=
                 kebabCase(romanceMovies.results[i].name) %>>
@@ -251,9 +242,6 @@
                 <% } else { %>
                   <%=  new Date(romanceMovies.results[i].first_air_date).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric'})%>
                   <% } %>
-              </p>
-              <p class="card-text text-muted">
-                Vote average: <%= romanceMovies.results[i].vote_average %>
               </p>
             </div>
           </div>
@@ -274,12 +262,13 @@
           <a href=/horror/<%= kebabCase(horrorMovies.results[i].title) %><%=
             kebabCase(horrorMovies.results[i].name) %>>
             <img
-            class="poster_path mt-3"
+            class="poster_path mt-3 mb-3"
             src="<%= image + horrorMovies.results[i].poster_path %>"
             class="card-img-top"
             alt="<%= horrorMovies.results[i].name %><%= horrorMovies.results[i].title %>"
           />
           </a>
+          <span class="badge bg-primary rounded-pill"><%= horrorMovies.results[i].vote_average %></span>
           <div class="card-body">
             <a href=/horror/<%= kebabCase(horrorMovies.results[i].title) %><%=
               kebabCase(horrorMovies.results[i].name) %>>
@@ -294,9 +283,6 @@
               <% } else { %>
                 <%=  new Date(horrorMovies.results[i].first_air_date).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric'})%>
                 <% } %>
-            </p>
-            <p class="card-text text-muted">
-              Vote average: <%= horrorMovies.results[i].vote_average %>
             </p>
           </div>
         </div>
@@ -317,7 +303,7 @@
             <a href=/documentaries/<%= kebabCase(documentariesMovies.results[i].title) %><%=
               kebabCase(documentariesMovies.results[i].name) %>>
               <img
-              class="poster_path mt-3"
+              class="poster_path mt-3 mb-3"
               src="<%= image + documentariesMovies.results[i].poster_path %>"
               class="card-img-top"
               alt="<%= documentariesMovies.results[i].name %><%= documentariesMovies.results[i].title %>"
@@ -331,15 +317,13 @@
                   documentariesMovies.results[i].name %>
                 </h5>
               </a>
+              <span class="badge bg-primary rounded-pill"><%= documentariesMovies.results[i].vote_average %></span>
               <p class="card-text font-weight-bold">
                 <%  if (documentariesMovies.results[i].release_date) {%>
                   <%=  new Date(documentariesMovies.results[i].release_date).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric'}) %>
                 <% } else { %>
                   <%=  new Date(documentariesMovies.results[i].first_air_date).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric'})%>
                   <% } %>
-              </p>
-              <p class="card-text text-muted">
-                Vote average: <%= documentariesMovies.results[i].vote_average %>
               </p>
             </div>
           </div>
