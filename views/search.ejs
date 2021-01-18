@@ -1,0 +1,67 @@
+<%- include('partials/header') -%>
+
+<meta
+  name="description"
+  content="More Movies is a website to see Trending, Netflix, Top Rated, Romance, Action, Horror and Documentaries Movies..."
+/>
+<title><%= capitalize(lowercase(searchQuery)) %> - More Movies</title>
+
+<body>
+  <div class="container py-4">
+    <div class="container-fluid mb-3">
+      <form class="d-flex" action="/search" method="POST">
+        <input
+          class="form-control mr-2"
+          type="search"
+          name="query"
+          placeholder="Search for a movie..."
+          aria-label="Search"
+        />
+        <button class="btn btn-outline-primary" type="submit">Search</button>
+      </form>
+    </div>
+
+    <h4>Search results for "<%= capitalize(lowercase(searchQuery)) %>"</h4>
+  </div>
+
+  <% for( let i = 0; i < info.results.length; i++ ) { %> <% if
+  (info.results[i].poster_path) { %>
+  <div class="mb-4 container">
+    <div class="row no-gutters">
+      <div class="col-md-3">
+        <a
+          href="/movie/<%= info.results[i].id %>-<%= kebabCase(info.results[i].title) %>"
+        >
+          <img
+            src="<%= image + info.results[i].poster_path %>"
+            class="row-search"
+            alt="<%= info.results[i].title %>"
+          />
+        </a>
+      </div>
+      <div class="col-md-8">
+        <div class="card-body">
+          <h5 class="card-title">
+            <a
+              href="/movie/<%= info.results[i].id %>-<%= kebabCase(info.results[i].title) %>"
+              ><%= info.results[i].title %>
+            </a>
+          </h5>
+          <p class="card-text">
+            <small class="text-muted">
+              <%= new
+              Date(info.results[i].release_date).toLocaleDateString('en-US', {
+              month: 'long', day: 'numeric', year: 'numeric'}) %>
+            </small>
+          </p>
+          <p class="card-text">
+            <%= info.results[i].overview.substring(0, 190) + '...' %> %>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <% } %> <% } %>
+</body>
+
+<%- include('partials/footer') -%>
