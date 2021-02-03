@@ -238,9 +238,13 @@
           <ul class="list-inline mt-2">
             <% for( let i = 0; i < info.keywords.keywords.length; i++ ) { %>
             <li class="list-inline-item my-1">
-              <span class="bg-secondary p-1 rounded">
-                <%= info.keywords.keywords[i].name %>
-              </span>
+              <a
+                href="/keyword/<%= info.keywords.keywords[i].id %>-<%= kebabCase(info.keywords.keywords[i].name) %>/movie"
+              >
+                <span class="bg-secondary p-1 rounded text-dark">
+                  <%= info.keywords.keywords[i].name %>
+                </span>
+              </a>
             </li>
             <% } %>
           </ul>

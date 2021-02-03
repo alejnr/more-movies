@@ -104,7 +104,28 @@ app.post('/search', function (req, res) {
   res.redirect(`/search/${searchQuery}`)
 })
 
-app.get('/keyword/:keywordId-keywo')
+app.get('/keyword/:keywordId-:keywordName/movie', function (req, res) {
+  const keyword_id = req.params.keywordId
+  const keyword_name = req.params.keywordName
+
+  rp(
+    `https://api.themoviedb.org/3/keyword/${keyword_id}/movies?api_key=${apiKEY}`
+  )
+    .then(function (data) {
+      res.render('keyword', {
+        info: JSON.parse(data),
+        image: image_url,
+        kebabCase: kebabCase,
+        keywordName: keyword_name,
+        capitalize: _.capitalize,
+        lowercase: _.lowerCase,
+      })
+    })
+    .catch(function (err) {
+      console.log(JSON.parse(err.response.body).status_message)
+      res.redirect('/')
+    })
+})
 
 app.use(function (req, res) {
   res.redirect('/')
