@@ -7,14 +7,10 @@ This website allow you to see Trending, Netfix, Action, Top Rated, Comedy, Roman
 
 ## Endpoint
 
-- GET netflixMovies
 - GET trendingMovies
+- GET popularMovies
+- GET now_playingMovies
 - GET topRatedMovies
-- GET actionMovies
-- GET comedyMovies
-- GET romanceMovies
-- GET horrorMovies
-- GET documentariesMovies
 
 ## Usage
 
