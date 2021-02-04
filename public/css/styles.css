@@ -7,6 +7,10 @@ figure p {
   color: #495057;
 }
 
+.bio p {
+  margin-bottom: -70px;
+}
+
 figure a:hover {
   color: #495057;
 }
@@ -84,6 +88,16 @@ body::-webkit-scrollbar-thumb {
   overflow-y: hidden;
   overflow-x: scroll;
   padding: 20px 0;
+}
+
+.rows::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+.rows::-webkit-scrollbar-thumb {
+  background: #2fa4e7;
+  border-radius: 10px;
 }
 
 .row-cast {
