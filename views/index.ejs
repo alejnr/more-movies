@@ -1,42 +1,55 @@
 <%- include('partials/header') -%>
   <meta
     name="description"
-    content="More Movies is a website to see Trending, Netflix, Top Rated, Romance, Action, Horror and Documentaries Movies..."
+    content="More Movies is a website to see Trending, Netflix, Top Rated, Romance, Action, Horror and Documentary Movies..."
   />
-  <title>More Movies</title>
+  <title> Home - More Movies</title>
 
   <body>
 
-    <div class="container mb-3 pt-4">
-      <div class="row no-gutters">
-        <div class="col-md-8">
-          <h1 class=" text-uppercase heading">Trending Movies</h1>
+    <div 
+      class="jumbotron rounded-0" 
+      style="
+        background-image: url('https://themoviedb.org/t/p/w1920_and_h600_multi_faces_filter(duotone,032541,01b4e4)<%= randomBgImg.backdrop_path %>');
+        background-position: center;
+        background-size: cover;"
+    >
+      <h2 class="text-white display-4 text-bold">Welcome.</h2>
+      <h3 class="text-white">Millions of movies, TV shows and people to discover. Explore now.</h3>
+
+      <form class="d-flex my-4 input-group" action="/search" method="POST">
+        <input
+          class="form-control py-4  amber-border"
+          type="search"
+          name="query"
+          autocorrect="off" 
+          autofill="off" 
+          autocomplete="off"
+          placeholder="Search for a movie, tv show, person..."
+          aria-label="Search"
+        />
+        <div class="input-group-append">
+          <button class="btn btn-info" type="submit">Search</button>
         </div>
-        <div class="col-md-4">
-          <div class="container-fluid">
-            <form class="d-flex" action="/search" method="POST">
-              <input class="form-control mr-2" type="search" name="query" placeholder="Search for a movie..." aria-label="Search">
-              <button class="btn btn-outline-primary" type="submit">Search</button>
-            </form>
-          </div>
-        </div>
-      </div>
+      </form>
+      
     </div>
 
-
-    
+    <h2 class="pl-3 mt-4">Trending Now</h2>
 
     <div class="container">
-      <div class="row p-3 row-cols-2 row-cols-md-3 row-cols-lg-5">
+      <div class="row p-3">
         <% for( let i = 0; i < trending.results.length; i++ ) { %>
-
-          <% if (trending.results[i].poster_path) { %>
-          <div class="col mb-4">
+          <% if (trending.results[i].media_type == 'movie') { %>
+          <div class="col-md-4 col-lg-3 mb-4">
             <a href=/movie/<%= trending.results[i].id %>-<%= kebabCase(trending.results[i].title) %>>
               <img
-              class="poster_path mt-3 mb-3"
-              src="<%= image + trending.results[i].poster_path %>"
-              class="card-img-top"
+              class="card-img-top poster_path mt-3 mb-3"
+              src="<% if (trending.results[i].poster_path) {  %>
+                <%= image + trending.results[i].poster_path %>
+                <% } else {  %>
+                /images/no-image.jpg
+                <% } %>"
               alt="<%= trending.results[i].title %>"
             />
             </a>
@@ -52,25 +65,51 @@
             </div>
           </div>
           <% } %>
-
+          <% if (trending.results[i].media_type == 'tv') { %>
+          <div class="col-md-4 col-lg-3 mb-4">
+            <a href=/tv/<%= trending.results[i].id %>-<%= kebabCase(trending.results[i].name) %>>
+              <img
+              class="card-img-top poster_path mt-3 mb-3"
+              src="<% if (trending.results[i].poster_path) {  %>
+                <%= image + trending.results[i].poster_path %>
+                <% } else {  %>
+                /images/no-image.jpg
+                <% } %>"
+              alt="<%= trending.results[i].name %>"
+            />
+            </a>
+            <div class="card-body">
+              <h5 class="card-title text-truncate">
+                <a href=/tv/<%= trending.results[i].id %>-<%= kebabCase(trending.results[i].name) %>
+                  ><%= trending.results[i].name %>
+                </a>
+              </h5>
+              <p class="card-text font-weight-bold">
+                  <%=  new Date(trending.results[i].first_air_date).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric'}) %>
+              </p>
+            </div>
+          </div>
+          <% } %>
         <% } %>
       </div>
     </div>
 
     
-    <h2 class="pl-3">What's Popular</h2>
+    <h2 class="pl-3 mt-4">Popular Movies</h2>
 
     <div class="container">
-      <div class="row p-3 row-cols-2 row-cols-md-3 row-cols-lg-5">
+      <div class="row p-3">
         <% for( let i = 0; i < popular.results.length; i++ ) { %>
 
-          <% if (popular.results[i].poster_path) { %>
-          <div class="col mb-4">
+          <div class="col-md-4 col-lg-3 mb-4">
             <a href=/movie/<%= popular.results[i].id %>-<%= kebabCase(popular.results[i].title) %>>
               <img
-              class="poster_path mt-3 mb-3"
-              src="<%= image + popular.results[i].poster_path %>"
-              class="card-img-top"
+              class="card-img-top poster_path mt-3 mb-3"
+              src="<% if (popular.results[i].poster_path) {  %>
+                <%= image + popular.results[i].poster_path %>
+                <% } else {  %>
+                /images/no-image.jpg
+                <% } %>"
               alt="<%= popular.results[i].title %>"
             />
             </a>
@@ -86,41 +125,6 @@
             </div>
           </div>
           <% } %>
-
-        <% } %>
-      </div>
-    </div>
-    
-    <h2 class="pl-3">Top Rated</h2>
-
-    <div class="container">
-      <div class="row p-3 row-cols-2 row-cols-md-3 row-cols-lg-5">
-        <% for( let i = 0; i < top_rated.results.length; i++ ) { %>
-
-          <% if (top_rated.results[i].poster_path) { %>
-          <div class="col mb-4">
-            <a href=/movie/<%= top_rated.results[i].id %>-<%= kebabCase(top_rated.results[i].title) %>>
-              <img
-              class="poster_path mt-3 mb-3"
-              src="<%= image + top_rated.results[i].poster_path %>"
-              class="card-img-top"
-              alt="<%= top_rated.results[i].title %>"
-            />
-            </a>
-            <div class="card-body">
-              <h5 class="card-title text-truncate">
-                <a href=/movie/<%= top_rated.results[i].id %>-<%= kebabCase(top_rated.results[i].title) %>
-                  ><%= top_rated.results[i].title %>
-                </a>
-              </h5>
-              <p class="card-text font-weight-bold">
-                  <%=  new Date(top_rated.results[i].release_date).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric'}) %>
-              </p>
-            </div>
-          </div>
-          <% } %>
-
-        <% } %>
       </div>
     </div>
 

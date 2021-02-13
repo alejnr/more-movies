@@ -1,13 +1,13 @@
 <%- include('partials/header') -%>
   <meta
     name="description"
-    content="More Movies is a website to see info, Netflix, Top Rated, Romance, Action, Horror and Documentary Movies..."
+    content="More Movies is a website to see info, Netflix, Top Rated, Romance, Action, Horror and Documentaries Movies..."
   />
-  <title>Popular Movies - More Movies</title>
+  <title>Popular TV Shows - More Movies</title>
 
   <body>
 
-    <h2 class="pl-3 mt-4">Popular Movies</h2>
+    <h2 class="pl-3 mt-4">Popular TV Shows</h2>
 
     <div class="container">
       <div class="row p-3">
@@ -15,22 +15,22 @@
 
           <% if (info.results[i].poster_path) { %>
           <div class="col-md-4 col-lg-3 mb-4">
-            <a href=/movie/<%= info.results[i].id %>-<%= kebabCase(info.results[i].title) %>>
+            <a href=/tv/<%= info.results[i].id %>-<%= kebabCase(info.results[i].name) %>>
               <img
               class="poster_path mt-3 mb-3"
               src="<%= image + info.results[i].poster_path %>"
               class="card-img-top"
-              alt="<%= info.results[i].title %>"
+              alt="<%= info.results[i].name %>"
             />
             </a>
             <div class="card-body">
               <h5 class="card-title text-truncate">
-                <a href=/movie/<%= info.results[i].id %>-<%= kebabCase(info.results[i].title) %>
-                  ><%= info.results[i].title %>
+                <a href=/tv/<%= info.results[i].id %>-<%= kebabCase(info.results[i].name) %>
+                  ><%= info.results[i].name %>
                 </a>
               </h5>
               <p class="card-text font-weight-bold">
-                  <%=  new Date(info.results[i].release_date).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric'}) %>
+                  <%=  new Date(info.results[i].first_air_date).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric'}) %>
               </p>
             </div>
           </div>
@@ -45,12 +45,12 @@
           <li class="page-item <% if (page <= 1) { %>
             disabled
           <% } %>">
-            <a class="page-link" href="/movie/page=<%= page - 1 %>">Previous</a>
+            <a class="page-link" href="/tv/page=<%= page - 1 %>">Previous</a>
           </li>
           <li class="page-item <% if (page == info.total_pages) { %>
             disabled
           <% } %>">
-            <a class="page-link" href="/movie/page=<%= ++page %>">Next</a>
+            <a class="page-link" href="/tv/page=<%= ++page %>">Next</a>
           </li>
         </ul>
     </nav>

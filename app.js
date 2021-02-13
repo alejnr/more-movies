@@ -1,131 +1,92 @@
 const express = require('express')
 const ejs = require('ejs')
-const dotenv = require('dotenv')
-const _ = require('lodash')
-const rp = require('request-promise')
 const bodyParser = require('body-parser')
-const getLanguageName = require('iso-639-1')
-
-dotenv.config()
+const index = require('./routes/index')
+const tvShow = require('./routes/tvShows/tvShows')
+const movie = require('./routes/movie')
+const search = require('./routes/search')
+const keyword = require('./routes/keyword')
+const people = require('./routes/people')
+const action = require('./routes/genres/action')
+const comedy = require('./routes/genres/comedy')
+const romance = require('./routes/genres/romance')
+const horror = require('./routes/genres/horror')
+const documentary = require('./routes/genres/documentary')
+const movies = require('./routes/movies/movies')
+const nowPlaying = require('./routes/movies/nowPlaying')
+const upcoming = require('./routes/movies/upcoming')
+const topRatedMovies = require('./routes/movies/topRated')
+const airingToday = require('./routes/tvShows/airingToday')
+const onTV = require('./routes/tvShows/onTV')
+const topRatedTVShows = require('./routes/tvShows/topRated')
 
 const app = express()
-
-const image_url = 'https://image.tmdb.org/t/p/original'
-const yt_url = 'https://www.youtube.com/watch?v='
-const kebabCase = _.kebabCase
-const apiKEY = process.env.API_KEY
 
 app.use(bodyParser.urlencoded({ extended: true }))
 app.set('view engine', 'ejs')
 
 app.use(express.static('public'))
 
-app.get('/', function (req, res) {
-  const requestMovies = [
-    `https://api.themoviedb.org/3/trending/movie/day?api_key=${apiKEY}`,
-    `https://api.themoviedb.org/3/movie/now_playing?api_key=${apiKEY}`,
-    `https://api.themoviedb.org/3/movie/popular?api_key=${apiKEY}`,
-    `https://api.themoviedb.org/3/movie/top_rated?api_key=${apiKEY}`,
-  ]
+app.get('/', index)
 
-  const promises = requestMovies.map((requestMovie) => rp(requestMovie))
-  Promise.all(promises).then((data) => {
-    const trendingData = JSON.parse(data[0])
-    const now_playingData = JSON.parse(data[1])
-    const popularData = JSON.parse(data[2])
-    const top_ratedData = JSON.parse(data[3])
+app.get('/tv/top-rated', topRatedTVShows.redirect)
+app.get('/tv/top-rated/page=:pageNumber', topRatedTVShows.request)
 
-    res.render('index', {
-      trending: trendingData,
-      now_playing: now_playingData,
-      popular: popularData,
-      top_rated: top_ratedData,
-      image: image_url,
-      kebabCase: kebabCase,
-    })
-  })
-})
+app.get('/tv/on-the-air', onTV.redirect)
+app.get('/tv/on-the-air/page=:pageNumber', onTV.request)
 
-function timeConvert(n) {
-  var num = n
-  var hours = num / 60
-  var rhours = Math.floor(hours)
-  var minutes = (hours - rhours) * 60
-  var rminutes = Math.round(minutes)
-  return rhours + 'h ' + rminutes + 'm'
-}
+app.get('/tv/airing-today', airingToday.redirect)
+app.get('/tv/airing-today/page=:pageNumber', airingToday.request)
 
-app.get('/movie/:movieID-:movieName', function (req, res) {
-  const requestID = req.params.movieID
+app.get('/movie/top-rated', topRatedMovies.redirect)
+app.get('/movie/top-rated/page=:pageNumber', topRatedMovies.request)
 
-  rp(
-    `https://api.themoviedb.org/3/movie/${requestID}?api_key=${apiKEY}&append_to_response=videos,images,credits,recommendations,keywords`
-  )
-    .then(function (data) {
-      res.render('movie', {
-        info: JSON.parse(data),
-        image: image_url,
-        ytURL: yt_url,
-        timeConvert: timeConvert,
-        kebabCase: kebabCase,
-        getLanguageName: getLanguageName,
-      })
-    })
-    .catch(function (err) {
-      console.log(JSON.parse(err.response.body).status_message)
-      res.redirect('/')
-    })
-})
+app.get('/movie/upcoming', upcoming.redirect)
+app.get('/movie/upcoming/page=:pageNumber', upcoming.request)
 
-app.get('/search/:querySearch', function (req, res) {
-  const searchQuery = req.params.querySearch
+app.get('/movie/now-playing', nowPlaying.redirect)
+app.get('/movie/now-playing/page=:pageNumber', nowPlaying.request)
 
-  rp(
-    `https://api.themoviedb.org/3/search/movie?api_key=${apiKEY}&query=${searchQuery}`
-  )
-    .then(function (data) {
-      res.render('search', {
-        info: JSON.parse(data),
-        image: image_url,
-        kebabCase: kebabCase,
-        searchQuery: searchQuery,
-        capitalize: _.capitalize,
-        lowercase: _.lowerCase,
-      })
-    })
-    .catch(function (err) {
-      console.log(JSON.parse(err.response.body).status_message)
-      res.redirect('/')
-    })
-})
+app.get('/movie/page=:pageNumber', movies.request)
+app.get('/movie', movies.redirect)
 
-app.post('/search', function (req, res) {
-  const searchQuery = kebabCase(req.body.query)
-  res.redirect(`/search/${searchQuery}`)
-})
+app.get('/movie/:movieID-:movieName', movie)
+app.get('/tv/:tvShowID-:tvShowName', tvShow.info)
+app.get('/person/:personID-:personName', people.info)
 
-app.get('/keyword/:keywordId-:keywordName/movie', function (req, res) {
-  const keyword_id = req.params.keywordId
-  const keyword_name = req.params.keywordName
+app.post('/search', search.redirect)
 
-  rp(
-    `https://api.themoviedb.org/3/keyword/${keyword_id}/movies?api_key=${apiKEY}`
-  )
-    .then(function (data) {
-      res.render('keyword', {
-        info: JSON.parse(data),
-        image: image_url,
-        kebabCase: kebabCase,
-        keywordName: keyword_name,
-        capitalize: _.capitalize,
-        lowercase: _.lowerCase,
-      })
-    })
-    .catch(function (err) {
-      console.log(JSON.parse(err.response.body).status_message)
-      res.redirect('/')
-    })
-})
+app.get('/search/:querySearch/page=:pageNumber', search.request)
+
+app.get('/keyword/:keywordId-:keywordName/movie', keyword.request)
+
+app.get('/tv', tvShow.redirect)
+
+app.get('/tv/page=:pageNumber', tvShow.request)
+
+app.get('/person', people.redirect)
+
+app.get('/person/page=:pageNumber', people.request)
+
+app.get('/action', action.redirect)
+
+app.get('/action/page=:pageNumber', action.request)
+
+app.get('/comedy', comedy.redirect)
+
+app.get('/comedy/page=:pageNumber', comedy.request)
+
+app.get('/romance', romance.redirect)
+
+app.get('/romance/page=:pageNumber', romance.request)
+
+app.get('/horror', horror.redirect)
+
+app.get('/horror/page=:pageNumber', horror.request)
+
+app.get('/documentary', documentary.redirect)
+
+app.get('/documentary/page=:pageNumber', documentary.request)
 
 app.use(function (req, res) {
   res.redirect('/')

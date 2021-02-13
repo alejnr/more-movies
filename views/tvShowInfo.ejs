@@ -1,0 +1,297 @@
+<%- include('partials/header') -%>
+<meta
+  name="description"
+  content="<%= info.overview.substring(0, 150) + '...' %>"
+/>
+
+<title>
+  <%= info.name %> (<%= new
+  Date(info.first_air_date).toLocaleDateString('en-US', { year: 'numeric'}) %>)
+  - More Movies
+</title>
+
+<body>
+  <header
+    class="banner"
+    style="
+      background-size: cover;
+      background-image: url('<%= image + info.backdrop_path %>');
+    "
+  >
+    <div class="overlay"></div>
+    <div class="banner-contents container">
+      <div>
+        <div class="row no-gutters">
+          <div class="col-md-4">
+            <img
+              src="<% if (info.poster_path) {  %>
+                <%= image + info.poster_path %>
+                <% } else {  %>
+                /images/no-image.jpg
+                <% } %>"
+              class="card-img"
+              alt="<%= info.name %>"
+            />
+          </div>
+          <div class="col-md-8">
+            <div class="card-body">
+              <h1 class="card-title">
+                <% if (info.homepage) { %>
+                <a target="_blank" href="<%= info.homepage %>">
+                  <%= info.name %>
+                </a>
+                <% } else { %>
+                <a
+                  target="_blank"
+                  href="https://www.imdb.com/title/<%= info.imdb_id %>"
+                >
+                  <%= info.name %>
+                </a>
+                <% } %>
+                <span class="text-muted"
+                  >(<%= new
+                  Date(info.first_air_date).toLocaleDateString('en-US', { year:
+                  'numeric'}) %>)</span
+                >
+              </h1>
+
+              <p class="date">
+                <%= info.first_air_date %> <span class="dot"></span> <% for( let
+                i = 0; i < info.genres.length; i++ ) { %> <%=
+                info.genres[i].name + ',' %> <% } %> <span class="dot"></span>
+                <%= timeConvert(info.episode_run_time) %>
+              </p>
+
+              <p class="text-bold">
+                <% for( let i = 0; i < info.videos.results.length; i++ ) { %>
+                <a
+                  data-fancybox
+                  target="_blank"
+                  href="<%= ytURL + info.videos.results[0].key %>"
+                >
+                  <% } %>
+                  <i class="fas fa-play"></i> Play Trailer
+                </a>
+              </p>
+              <h4>Overview</h4>
+              <p class="card-text"><%= info.overview %></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <div class="mobile-contents">
+    <div>
+      <div class="row no-gutters">
+        <div class="col-md-8">
+          <div class="card-body">
+            <div class="m-t">
+              <h1 class="card-title">
+                <a target="_blank" href="<%= info.homepage %>">
+                  <%= info.name %>
+                </a>
+                <span class="text-muted"
+                  >(<%= new
+                  Date(info.first_air_date).toLocaleDateString('en-US', { year:
+                  'numeric'}) %>)
+                </span>
+              </h1>
+
+              <p class="text-white">
+                <%= info.first_air_date %> <span class="dot"></span> <% for( let
+                i = 0; i < info.genres.length; i++ ) { %> <%=
+                info.genres[i].name + ',' %> <% } %> <span class="dot"></span>
+                <%= timeConvert(info.episode_run_time) %>
+              </p>
+              <p class="text-bold">
+                <% for( let i = 0; i < info.videos.results.length; i++ ) { %>
+                <a
+                  data-fancybox
+                  target="_blank"
+                  href="<%= ytURL + info.videos.results[0].key %>"
+                >
+                  <% } %>
+                  <i class="fas fa-play"></i> Play Trailer
+                </a>
+              </p>
+
+              <h6 class="text-muted"><%= info.tagline %></h6>
+            </div>
+
+            <h4 class="pt-5">Overview</h4>
+            <p class="card-text"><%= info.overview %></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="mb-5 content">
+    <div class="row no-gutters">
+      <div class="col-md-9">
+        <div class="container mt-5">
+          <h4>Top Billed Cast</h4>
+
+          <div class="rows pl-3">
+            <% for (let i = 0; i < info.credits.cast.length; i++) { %>
+            <figure class="p-2">
+              <a
+                href="/person/<%= info.credits.cast[i].id %>-<%= kebabCase(info.credits.cast[i].original_name) %>"
+              >
+                <img
+                  class="row-cast"
+                  src="<% if (info.credits.cast[i].profile_path) {  %>
+                    <%= image + info.credits.cast[i].profile_path %>
+                    <% } else {  %>
+                    /images/person-placeholder.jpg
+                    <% } %>"
+                  alt="..."
+                />
+              </a>
+              <figcaption class="mt-2">
+                <a
+                  href="/person/<%= info.credits.cast[i].id %>-<%= kebabCase(info.credits.cast[i].original_name) %>"
+                >
+                  <strong class="text-dark">
+                    <%= info.credits.cast[i].original_name %>
+                  </strong>
+                </a>
+                <p><%= info.credits.cast[i].character %></p>
+              </figcaption>
+            </figure>
+            <% } %>
+          </div>
+        </div>
+
+        <div class="container mt-5">
+          <h4 class="mb-4">Seasons</h4>
+
+          <% for( let i = 0; i < info.seasons.length; i++ ) { %>
+
+          <div class="mb-4">
+            <div class="row no-gutters">
+              <div class="col-md-3">
+                <img
+                  src="<% if (info.seasons[i].poster_path) {  %>
+                    <%= image + info.seasons[i].poster_path %>
+                    <% } else {  %>
+                    /images/no-image.jpg
+                    <% } %>"
+                  class="row-season"
+                  alt="<%= info.seasons[i].name %>"
+                />
+              </div>
+              <div class="col-md-9">
+                <div class="card-body season-body">
+                  <h5 class="card-title"><%= info.seasons[i].name %></h5>
+                  <p class="card-text">
+                    <small class="text-muted">
+                      <%= new
+                      Date(info.seasons[i].air_date).toLocaleDateString('en-US',
+                      { month: 'long', day: 'numeric', year: 'numeric'}) %> |
+                      <%= info.seasons[i].episode_count %> Episodes
+                    </small>
+                  </p>
+                  <p class="card-text">
+                    <%= info.seasons[i].overview.substring(0, 190) + '...' %> %>
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <% } %>
+        </div>
+
+        <div class="container mt-5">
+          <h4>Gallery</h4>
+
+          <div class="rows pl-3">
+            <% for (let i = 0; i < info.images.backdrops.length; i++) { %> <% if
+            (info.images.backdrops[i].file_path) { %>
+            <figure>
+              <img
+                class="row-media"
+                src="<%= image + info.images.backdrops[i].file_path %>"
+                alt=""
+              />
+              <p></p>
+            </figure>
+            <% } %> <% } %>
+          </div>
+        </div>
+
+        <div class="container mt-5">
+          <h4>Recommendations</h4>
+
+          <div class="rows pl-3">
+            <% for (let i = 0; i < info.recommendations.results.length; i++) {
+            %> <% if (info.recommendations.results[i].backdrop_path) { %>
+            <figure>
+              <a
+                href="/netflix/<%= info.recommendations.results[i].id %>-<%= kebabCase(info.recommendations.results[i].name) %>"
+                ><img
+                  class="row-reco"
+                  src="<%= image + info.recommendations.results[i].backdrop_path %>"
+                  alt=""
+              /></a>
+              <figcaption>
+                <a
+                  href="/netflix/<%= info.recommendations.results[i].id %>-<%= kebabCase(info.recommendations.results[i].name) %>"
+                >
+                  <p class="mt-1">
+                    <%= info.recommendations.results[i].name %>
+                  </p>
+                </a>
+              </figcaption>
+            </figure>
+            <% } %> <% } %>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="container mt-5">
+          <strong>Status</strong>
+          <p><%= info.status %></p>
+
+          <strong>Original Language</strong>
+          <p><%= getLanguageName.getName(info.original_language) %></p>
+
+          <strong>Networks</strong>
+          <% for( let i = 0; i < info.networks.length; i++ ) { %>
+
+          <p>
+            <img
+              width="100px"
+              src="<%= image + info.networks[i].logo_path %>"
+              alt=""
+            />
+          </p>
+          <% } %>
+
+          <strong>Type</strong>
+          <p><%= info.type %></p>
+
+          <strong>Keywords</strong>
+          <ul class="list-inline mt-2">
+            <% for( let i = 0; i < info.keywords.results.length; i++ ) { %>
+            <li class="list-inline-item my-1">
+              <a
+                href="/keyword/<%= info.keywords.results[i].id %>-<%= kebabCase(info.keywords.results[i].name) %>/movie"
+              >
+                <span class="bg-secondary p-1 rounded text-dark">
+                  <%= info.keywords.results[i].name %>
+                </span>
+              </a>
+            </li>
+            <% } %>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <%- include('partials/footer') -%>
+</body>

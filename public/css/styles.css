@@ -55,8 +55,6 @@ body::-webkit-scrollbar-thumb {
 
 .overlay {
   position: absolute;
-  top: 0;
-  left: 0;
   width: 100%;
   background: #1a1a1b;
   opacity: 0.8;
@@ -70,13 +68,6 @@ body::-webkit-scrollbar-thumb {
   border-radius: 50%;
   display: inline-block;
   margin: 3px;
-}
-
-.card-img {
-  border-radius: 10px;
-  width: 250px;
-  margin-left: 90px;
-  height: 400px;
 }
 
 .rows {
@@ -96,16 +87,48 @@ body::-webkit-scrollbar-thumb {
   border-radius: 10px;
 }
 
-.row-cast {
-  max-height: 200px;
+.known_for {
+  height: 200px;
+  width: 135px;
+  object-fit: contain;
   margin-right: 15px;
   border-radius: 5px;
+  background-color: #e1e1e1;
+}
+
+.row-cast {
+  height: 200px;
+  max-width: 135px;
+  object-fit: contain;
+  margin-right: 15px;
+  border-radius: 5px;
+  background-color: #e9edee;
 }
 
 .row-search {
-  max-height: 200px;
+  object-fit: contain;
+  max-width: 135px;
+  height: 200px;
   border-radius: 5px;
   margin-left: 100px;
+}
+
+.row-season {
+  object-fit: contain;
+  height: 200px;
+  max-width: 135px;
+  border-radius: 5px;
+  margin-left: 10px;
+  background-color: #e1e1e1;
+}
+
+.card-img {
+  border-radius: 10px;
+  width: 250px;
+  margin-left: 90px;
+  height: 375px;
+  object-fit: contain;
+  background-color: #e1e1e1;
 }
 
 .row-media {
@@ -121,9 +144,22 @@ body::-webkit-scrollbar-thumb {
 }
 
 .poster_path {
-  object-fit: contain;
-  max-height: 300px;
+  display: block;
+  margin: auto;
+  height: 300px;
+  max-width: 200px;
   border-radius: 5px;
+  object-fit: contain;
+  background-color: #e1e1e1;
+}
+.info-pic {
+  display: block;
+  margin: auto;
+  object-fit: contain;
+  height: 500px;
+  max-width: 340px;
+  border-radius: 5px;
+  background-color: #e9edee;
 }
 .overlay {
   height: 80vh;
@@ -135,6 +171,16 @@ body::-webkit-scrollbar-thumb {
   }
   .mobile-contents {
     display: none;
+  }
+  .season-body {
+    position: absolute;
+    left: -80px;
+  }
+  .poster_path:hover,
+  .row-search:hover {
+    -webkit-box-shadow: 3px 3px 5px 6px #ccc;
+    -moz-box-shadow: 3px 3px 5px 6px #ccc;
+    box-shadow: 3px 3px 5px 6px #ccc;
   }
 }
 
@@ -162,11 +208,4 @@ body::-webkit-scrollbar-thumb {
     position: absolute;
     top: -300px;
   }
-}
-
-.poster_path:hover,
-.row-search:hover {
-  -webkit-box-shadow: 3px 3px 5px 6px #ccc;
-  -moz-box-shadow: 3px 3px 5px 6px #ccc;
-  box-shadow: 3px 3px 5px 6px #ccc;
 }

@@ -2,7 +2,7 @@
 
 <meta
   name="description"
-  content="More Movies is a website to see Trending, Netflix, Top Rated, Romance, Action, Horror and Documentaries Movies..."
+  content="More Movies is a website to see Trending, Netflix, Top Rated, Romance, Action, Horror and Documentary Movies..."
 />
 <title><%= capitalize(lowercase(searchQuery)) %> - More Movies</title>
 
@@ -13,26 +13,49 @@
 </script>
 
 <body>
-  <div class="container py-4">
-    <div class="container-fluid mb-3">
-      <form class="d-flex" action="/search" method="POST">
-        <input
-          class="form-control mr-2"
-          type="search"
-          name="query"
-          placeholder="Search for a movie..."
-          aria-label="Search"
-        />
-        <button class="btn btn-outline-primary" type="submit">Search</button>
-      </form>
-    </div>
+  <div class="container pb-4">
     <button onclick="goBack()" class="btn btn-secondary my-3">Go Back</button>
-
     <h4>Search results for "<%= capitalize(lowercase(searchQuery)) %>"</h4>
   </div>
 
   <% for( let i = 0; i < info.results.length; i++ ) { %> <% if
-  (info.results[i].poster_path) { %>
+  (info.results[i].media_type == 'person') { %>
+  <div class="mb-4 container">
+    <div class="row no-gutters">
+      <div class="col-md-3">
+        <a
+          href="/person/<%= info.results[i].id %>-<%= kebabCase(info.results[i].name) %>"
+        >
+          <img
+            src="<% if (info.results[i].profile_path) {  %>
+              <%= image + info.results[i].profile_path %>
+              <% } else {  %>
+              /images/person-placeholder.jpg
+              <% } %>"
+            class="row-search"
+            style="background-color: #e9edee"
+            alt="<%= info.results[i].name %>"
+          />
+        </a>
+      </div>
+      <div class="col-md-8">
+        <div class="card-body">
+          <h5 class="card-title">
+            <a
+              href="/person/<%= info.results[i].id %>-<%= kebabCase(info.results[i].name) %>"
+              ><%= info.results[i].name %>
+            </a>
+          </h5>
+          <p class="card-text"></p>
+          <p class="card-text">
+            Known For <span class="dot"></span> <%=
+            info.results[i].known_for_department %>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <% } %> <% if (info.results[i].media_type == 'movie') { %>
   <div class="mb-4 container">
     <div class="row no-gutters">
       <div class="col-md-3">
@@ -40,8 +63,13 @@
           href="/movie/<%= info.results[i].id %>-<%= kebabCase(info.results[i].title) %>"
         >
           <img
-            src="<%= image + info.results[i].poster_path %>"
+            src="<% if (info.results[i].poster_path) {  %>
+              <%= image + info.results[i].poster_path %>
+                <% } else {  %>
+                /images/no-image.jpg
+              <% } %>"
             class="row-search"
+            style="background-color: #e1e1e1"
             alt="<%= info.results[i].title %>"
           />
         </a>
@@ -68,7 +96,71 @@
       </div>
     </div>
   </div>
-  <% } %> <% } %>
+  <% } %> <% if (info.results[i].media_type == 'tv') { %>
+  <div class="mb-4 container">
+    <div class="row no-gutters">
+      <div class="col-md-3">
+        <a
+          href="/tv/<%= info.results[i].id %>-<%= kebabCase(info.results[i].name) %>"
+        >
+          <img
+            src="<% if (info.results[i].poster_path) {  %>
+              <%= image + info.results[i].poster_path %>
+                <% } else {  %>
+                /images/no-image.jpg
+              <% } %>"
+            class="row-search"
+            style="background-color: #e1e1e1"
+            alt="<%= info.results[i].name %>"
+          />
+        </a>
+      </div>
+      <div class="col-md-8">
+        <div class="card-body">
+          <h5 class="card-title">
+            <a
+              href="/tv/<%= info.results[i].id %>-<%= kebabCase(info.results[i].name) %>"
+              ><%= info.results[i].name %>
+            </a>
+          </h5>
+          <p class="card-text">
+            <small class="text-muted">
+              <%= new
+              Date(info.results[i].first_air_date).toLocaleDateString('en-US', {
+              month: 'long', day: 'numeric', year: 'numeric'}) %>
+            </small>
+          </p>
+          <p class="card-text">
+            <%= info.results[i].overview.substring(0, 190) + '...' %> %>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <% } %> <% } %> <% if (info.total_pages >= 2) { %>
+  <nav aria-label="Page navigation example">
+    <ul class="pagination justify-content-center">
+      <li class="page-item <% if (page <= 1) { %> disabled <% } %>">
+        <a
+          class="page-link"
+          href="/search/<%= searchQuery %>/page=<%= page - 1 %>"
+        >
+          Previous
+        </a>
+      </li>
+      <li
+        class="page-item <% if (page == info.total_pages) { %> disabled <% } %>"
+      >
+        <a
+          class="page-link"
+          href="/search/<%= searchQuery %>/page=<%= ++page %>"
+        >
+          Next
+        </a>
+      </li>
+    </ul>
+  </nav>
+  <% } %>
 </body>
 
 <%- include('partials/footer') -%>

@@ -1,0 +1,180 @@
+<%- include('partials/header') -%>
+<meta
+  name="description"
+  content="<%= info.biography.substring(0, 150) + '...' %>"
+/>
+
+<title><%= info.name %> - More Movies</title>
+
+<body>
+
+  <div class="my-4 pt-4 container">
+    <div class="row">
+      <div class="col-md-4">
+        <img
+          src="<% if (info.profile_path) {  %>
+            <%= image + info.profile_path %>
+            <% } else {  %>
+            /images/person-placeholder.jpg
+            <% } %>"
+          class="info-pic"
+          alt="<%= info.name %>"
+        />
+
+        <div class="mt-5">
+          <% if (info.external_ids.facebook_id) { %>
+            <span class="pr-3">
+              <a href="https://www.facebook.com/<%= info.external_ids.facebook_id %>" target="_blank" rel="noopener noreferrer">
+                <i class="fab fa-facebook fa-2x text-dark"></i>
+              </a>
+            </span>
+          <% } %>
+          <% if (info.external_ids.twitter_id) { %>
+            <span class="pr-3">
+              <a href="https://twitter.com/<%= info.external_ids.twitter_id %>" target="_blank" rel="noopener noreferrer">
+                <i class="fab fa-twitter fa-2x text-dark"></i>
+              </a>
+            </span>
+          <% } %>
+          <% if (info.external_ids.instagram_id) { %>
+            <span class="pr-3">
+              <a href="https://instagram.com/<%= info.external_ids.instagram_id %>" target="_blank" rel="noopener noreferrer">
+                <i class="fab fa-instagram fa-2x text-dark"></i>
+              </a>
+            </span>
+          <% } %>
+          <% if (info.external_ids.imdb_id) { %>
+            <span class="pr-3">
+              <a href="https://www.imdb.com/name/<%= info.external_ids.imdb_id %>" target="_blank" rel="noopener noreferrer">
+                <i class="fab fa-imdb fa-2x text-dark"></i>
+              </a>
+            </span>
+          <% } %>
+          <% if (info.homepage) { %>
+            <span class="pr-3">
+              <a href="<%= info.homepage %>" target="_blank" rel="noopener noreferrer">
+                <i class="fas fa-link fa-2x text-dark"></i>
+              </a>
+            </span>
+          <% } %>
+        </div>
+        <div>
+          <h4 class="text-dark py-3">Personal Info</h4>
+          <strong>Known For</strong>
+          <p><%= info.known_for_department %></p>
+          <strong>Gender</strong>
+          <p>
+            <% if (info.gender == 2) { %> Male <% } else { %> Female <% } %>
+          </p>
+          <strong>Birthday</strong>
+          <p>
+            <% if (info.birthday) { %>
+            <%= new Date (info.birthday).toLocaleDateString('en-US', { month:
+            'long', day: 'numeric', year: 'numeric'}) %> (<%=
+            ageNow(info.birthday) %> years old)
+             <% } else { %>
+              -
+            <% } %>
+          </p>
+          <strong>Place of Birth</strong>
+          <p>
+            <% if (info.birthday) { %>
+              <%= info.place_of_birth %>
+               <% } else { %>
+                -
+            <% } %>
+          </p>
+        </div>
+      </div>
+
+      <div class="col-md-8">
+        <h1 class="text-dark text-bold mb-4"><%= info.name %></h1>
+        <div>
+          <h5 class="text-dark">Biography</h5>
+          <p>
+            <% if (info.biography) { %>
+              <%= info.biography %>
+            <% } else { %>
+              We don't have a biography for  <%= info.name %>.
+            <% } %>
+        </p>
+        </div>
+        <div class="my-4">
+          <h5 class="text-dark">Known For</h5>
+          <div class="rows">
+            <% for( let i = 0; i < info.combined_credits.cast.length; i++ ) { %>
+                <figure>
+                  <a href="/<% if (info.combined_credits.cast[i].media_type == 'tv') { %>tv<% } else { %>movie<% } %>/<%= info.combined_credits.cast[i].id %>-<%= kebabCase(info.combined_credits.cast[i].name || info.combined_credits.cast[i].title) %>">
+                    <img
+                    class="known_for"
+                    src="<% if (info.combined_credits.cast[i].poster_path) {  %>
+                      <%= image + info.combined_credits.cast[i].poster_path %>
+                      <% } else {  %>
+                      /images/no-image.jpg
+                      <% } %>"
+                    alt="..."
+                    />
+                  </a>
+                  <figcaption>
+                    <a
+                      href="/<% if (info.combined_credits.cast[i].media_type == 'tv') { %>tv<% } else { %>movie<% } %>/<%= info.combined_credits.cast[i].id %>-<%= kebabCase(info.combined_credits.cast[i].name || info.combined_credits.cast[i].title) %>"
+                    >
+                      <p class="mt-1">
+                        <%= info.combined_credits.cast[i].name || info.combined_credits.cast[i].title %>
+                      </p>
+                    </a>
+                  </figcaption>
+                </figure>
+              <% } %>
+          </div>
+          <div class="rows">
+            <% for( let i = 0; i < info.combined_credits.crew.length; i++ ) { %>
+              <% if (info.combined_credits.crew[i].poster_path) { %>
+                <figure>
+                  <a
+                    href="/<% if (info.combined_credits.crew[i].media_type == 'tv') { %>tv<% } else { %>movie<% } %>/<%= info.combined_credits.crew[i].id %>-<%= kebabCase(info.combined_credits.crew[i].title || info.combined_credits.crew[i].name) %>">
+                    <img
+                      class="known_for"
+                      src="<% if (info.combined_credits.crew[i].poster_path) {  %>
+                        <%= image + info.combined_credits.crew[i].poster_path %>
+                        <% } else {  %>
+                        /images/no-image.jpg
+                        <% } %>"
+                      alt="..."
+                    />
+                  </a>
+                  <figcaption>
+                    <a
+                      href="/<% if (info.combined_credits.crew[i].media_type == 'tv') { %>tv<% } else { %>movie<% } %>/<%= info.combined_credits.crew[i].id %>-<%= kebabCase(info.combined_credits.crew[i].title || info.combined_credits.crew[i].name) %>"
+                    >
+                      <p class="mt-1">
+                        <%= info.combined_credits.crew[i].title || info.combined_credits.crew[i].name %>
+                      </p>
+                    </a>
+                  </figcaption>
+                </figure>
+              <% } %>
+            <% } %>
+          </div>
+        </div>
+
+        <div class="my-4">
+          <% if (info.images.profiles.length > 1) { %>
+            <h5 class="text-dark">Photos</h5>
+            <div class="rows">
+              <% for (let i = 0; i < info.images.profiles.length; i++) { %> 
+                <figure>
+                  <img
+                    class="row-media"
+                    src="<%= image + info.images.profiles[i].file_path %>"
+                    alt="..."
+                  />
+                  <p></p>
+                </figure>
+              <% } %>
+            </div>
+          <% } %> 
+        </div>
+
+  <%- include('partials/footer') -%>
+</body>

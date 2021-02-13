@@ -1,21 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <!-- Global site tag (gtag.js) - Google Analytics -->
-    <script
-      async
-      src="https://www.googletagmanager.com/gtag/js?id=G-FHTM0WHLNY"
-    ></script>
-    <script>
-      window.dataLayer = window.dataLayer || []
-      function gtag() {
-        dataLayer.push(arguments)
-      }
-      gtag('js', new Date())
-
-      gtag('config', 'G-FHTM0WHLNY')
-    </script>
-
     <link rel="stylesheet" href="/css/bootstrap.min.css" />
     <link
       rel="stylesheet"
@@ -29,5 +14,101 @@
     <link rel="shortcut icon" href="/images/favicon.png" type="image/x-icon" />
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+      <a class="navbar-brand" href="/">More Movies</a>
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-toggle="collapse"
+        data-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item dropdown">
+            <a
+              class="nav-link dropdown-toggle"
+              href="#"
+              id="navbarDropdown"
+              role="button"
+              data-toggle="dropdown"
+              aria-haspopup="true"
+              aria-expanded="false"
+            >
+              Movies
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <a class="dropdown-item" href="/movie">Popular</a>
+              <a class="dropdown-item" href="/movie/now-playing">Now Playing</a>
+              <a class="dropdown-item" href="/movie/upcoming">Upcoming</a>
+              <a class="dropdown-item" href="/movie/top-rated">Top Rated</a>
+            </div>
+          </li>
+          <li class="nav-item dropdown">
+            <a
+              class="nav-link dropdown-toggle"
+              href="#"
+              id="navbarDropdown"
+              role="button"
+              data-toggle="dropdown"
+              aria-haspopup="true"
+              aria-expanded="false"
+            >
+              TV Shows
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <a class="dropdown-item" href="/tv">Popular</a>
+              <a class="dropdown-item" href="/tv/airing-today">Airing Today</a>
+              <a class="dropdown-item" href="/tv/on-the-air">On TV</a>
+              <a class="dropdown-item" href="/tv/top-rated">Top Rated</a>
+            </div>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/person">People</a>
+          </li>
+          <li class="nav-item dropdown">
+            <a
+              class="nav-link dropdown-toggle"
+              href="#"
+              id="navbarDropdown"
+              role="button"
+              data-toggle="dropdown"
+              aria-haspopup="true"
+              aria-expanded="false"
+            >
+              Genres
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <a class="dropdown-item" href="/action">Action</a>
+              <a class="dropdown-item" href="/comedy">Comedy</a>
+              <a class="dropdown-item" href="/romance">Romance</a>
+              <a class="dropdown-item" href="/horror">Horror</a>
+              <a class="dropdown-item" href="/documentary">Documentary</a>
+            </div>
+          </li>
+        </ul>
+        <form action="/search" method="POST" class="form-inline my-2 my-lg-0">
+          <input
+            class="form-control mr-sm-2"
+            type="search"
+            name="query"
+            autocorrect="off"
+            autofill="off"
+            autocomplete="off"
+            placeholder="Search for a movie, tv show, person..."
+            aria-label="Search"
+          />
+          <button class="btn my-2 my-sm-0" type="submit">
+            <i class="fas fa-search text-secondary"></i>
+          </button>
+        </form>
+      </div>
+    </nav>
   </head>
 </html>

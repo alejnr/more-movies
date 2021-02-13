@@ -3,11 +3,11 @@
     name="description"
     content="More Movies is a website to see info, Netflix, Top Rated, Romance, Action, Horror and Documentary Movies..."
   />
-  <title>Popular Movies - More Movies</title>
+  <title>Comedy Movies - More Movies</title>
 
   <body>
 
-    <h2 class="pl-3 mt-4">Popular Movies</h2>
+    <h2 class="pl-3 mt-4">Comedy Movies</h2>
 
     <div class="container">
       <div class="row p-3">
@@ -45,12 +45,12 @@
           <li class="page-item <% if (page <= 1) { %>
             disabled
           <% } %>">
-            <a class="page-link" href="/movie/page=<%= page - 1 %>">Previous</a>
+            <a class="page-link" href="/comedy/page=<%= page - 1 %>">Previous</a>
           </li>
           <li class="page-item <% if (page == info.total_pages) { %>
             disabled
           <% } %>">
-            <a class="page-link" href="/movie/page=<%= ++page %>">Next</a>
+            <a class="page-link" href="/comedy/page=<%= ++page %>">Next</a>
           </li>
         </ul>
     </nav>
