@@ -231,7 +231,7 @@
             %> <% if (info.recommendations.results[i].backdrop_path) { %>
             <figure>
               <a
-                href="/netflix/<%= info.recommendations.results[i].id %>-<%= kebabCase(info.recommendations.results[i].name) %>"
+                href="/tv/<%= info.recommendations.results[i].id %>-<%= kebabCase(info.recommendations.results[i].name) %>"
                 ><img
                   class="row-reco"
                   src="<%= image + info.recommendations.results[i].backdrop_path %>"
@@ -239,7 +239,7 @@
               /></a>
               <figcaption>
                 <a
-                  href="/netflix/<%= info.recommendations.results[i].id %>-<%= kebabCase(info.recommendations.results[i].name) %>"
+                  href="/tv/<%= info.recommendations.results[i].id %>-<%= kebabCase(info.recommendations.results[i].name) %>"
                 >
                   <p class="mt-1">
                     <%= info.recommendations.results[i].name %>
