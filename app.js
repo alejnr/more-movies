@@ -56,7 +56,7 @@ app.get('/person/:personID-:personName', people.info)
 
 app.post('/search', search.redirect)
 
-app.get('/search/:querySearch/page=:pageNumber', search.request)
+app.get('/searchq=:querySearch/page=:pageNumber', search.request)
 
 app.get('/keyword/:keywordId-:keywordName/movie', keyword.request)
 
