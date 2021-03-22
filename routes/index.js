@@ -15,7 +15,6 @@ router.get('/', function (req, res) {
     `https://api.themoviedb.org/3/trending/all/day?api_key=${apiKEY}`,
     `https://api.themoviedb.org/3/movie/now_playing?api_key=${apiKEY}`,
     `https://api.themoviedb.org/3/movie/popular?api_key=${apiKEY}`,
-    `https://api.themoviedb.org/3/discover/tv?api_key=${apiKEY}&with_networks=213`,
   ]
 
   const promises = requestMovies.map((requestMovie) => rp(requestMovie))
@@ -23,11 +22,10 @@ router.get('/', function (req, res) {
     const trendingData = JSON.parse(data[0])
     const now_playingData = JSON.parse(data[1])
     const popularData = JSON.parse(data[2])
-    const randomBgImgData = JSON.parse(data[3])
 
     const randomBgImg =
-      randomBgImgData.results[
-        Math.floor(Math.random() * randomBgImgData.results.length - 1)
+      trendingData.results[
+        Math.floor(Math.random() * trendingData.results.length - 1)
       ]
 
     res.render('index', {
