@@ -23,15 +23,15 @@ router.get('/', function (req, res) {
     const now_playingData = JSON.parse(data[1])
     const popularData = JSON.parse(data[2])
 
-    const randomBgImg =
-      trendingData.results[
-        Math.floor(Math.random() * trendingData.results.length - 1)
-      ]
+    // const randomBgImg =
+    //   trendingData.results[
+    //     Math.floor(Math.random() * trendingData.results.length - 1)
+    //   ]
 
     res.render('index', {
       trending: trendingData,
       now_playing: now_playingData,
-      randomBgImg: randomBgImg,
+      // randomBgImg: randomBgImg,
       popular: popularData,
       image: image_url,
       kebabCase: kebabCase,
