@@ -14,8 +14,10 @@
         background-position: center;
         background-size: cover;"
     >
-      <h2 class="text-white display-4 text-bold">Welcome.</h2>
-      <h3 class="text-white">Millions of movies, TV shows and people to discover. Explore now.</h3>
+      <div class="hero-text">
+        <h2 class="text-white display-4 text-bold">Welcome.</h2>
+        <h3 class="text-white">Millions of movies, TV shows and people to discover. Explore now.</h3>
+      </div>
 
       <form class="d-flex my-4 input-group" action="/search" method="POST">
         <input
@@ -38,7 +40,7 @@
     <h2 class="pl-3 mt-4">Trending Now</h2>
 
     <div class="container">
-      <div class="row p-3">
+      <div class="row">
         <% for( let i = 0; i < trending.results.length; i++ ) { %>
           <% if (trending.results[i].media_type == 'movie') { %>
           <div class="col-md-4 col-lg-3 mb-4">
@@ -53,7 +55,7 @@
               alt="<%= trending.results[i].title %>"
             />
             </a>
-            <div class="card-body">
+            <div class="card-body mtc">
               <h5 class="card-title text-truncate">
                 <a href=/movie/<%= trending.results[i].id %>-<%= kebabCase(trending.results[i].title) %>
                   ><%= trending.results[i].title %>
@@ -78,7 +80,7 @@
               alt="<%= trending.results[i].name %>"
             />
             </a>
-            <div class="card-body">
+            <div class="card-body mtc">
               <h5 class="card-title text-truncate">
                 <a href=/tv/<%= trending.results[i].id %>-<%= kebabCase(trending.results[i].name) %>
                   ><%= trending.results[i].name %>
@@ -98,7 +100,7 @@
     <h2 class="pl-3 mt-4">Popular Movies</h2>
 
     <div class="container">
-      <div class="row p-3">
+      <div class="row">
         <% for( let i = 0; i < popular.results.length; i++ ) { %>
 
           <div class="col-md-4 col-lg-3 mb-4">
@@ -113,7 +115,7 @@
               alt="<%= popular.results[i].title %>"
             />
             </a>
-            <div class="card-body">
+            <div class="card-body mtc">
               <h5 class="card-title text-truncate">
                 <a href=/movie/<%= popular.results[i].id %>-<%= kebabCase(popular.results[i].title) %>
                   ><%= popular.results[i].title %>

@@ -1,14 +1,19 @@
-a {
-  text-decoration: none !important;
+@import url(https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic&amp;subset=latin);
+
+html {
+  font-size: 14px
 }
 
-figure p {
-  margin-bottom: -30px;
-  color: #495057;
-}
-
-figure a:hover {
-  color: #495057;
+body {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+  min-width: 320px;
+  background: #FFF;
+  font-family: Lato, 'Helvetica Neue', Arial, Helvetica, sans-serif;
+  font-size: 14px;
+  line-height: 1.4285em;
+  color: rgba(0, 0, 0, .87);
 }
 
 body::-webkit-scrollbar {
@@ -22,6 +27,23 @@ body::-webkit-scrollbar-track {
 body::-webkit-scrollbar-thumb {
   background-color: darkgrey;
   outline: 1px solid slategrey;
+}
+
+a {
+  text-decoration: none !important;
+}
+
+figure {
+  margin: 1em 10px;
+}
+
+
+figure p {
+  color: #495057;
+}
+
+figure a:hover {
+  color: #495057;
 }
 
 .col > img {
@@ -74,7 +96,7 @@ body::-webkit-scrollbar-thumb {
   display: flex;
   overflow-y: hidden;
   overflow-x: scroll;
-  padding: 20px 0;
+  /* padding: 20px 0; */
 }
 
 .rows::-webkit-scrollbar {
@@ -91,7 +113,7 @@ body::-webkit-scrollbar-thumb {
   height: 200px;
   width: 135px;
   object-fit: contain;
-  margin-right: 15px;
+  /* margin-right: -60px; */
   border-radius: 5px;
   background-color: #e1e1e1;
 }
@@ -100,7 +122,7 @@ body::-webkit-scrollbar-thumb {
   height: 200px;
   max-width: 135px;
   object-fit: contain;
-  margin-right: 15px;
+  /* margin-right: -60px; */
   border-radius: 5px;
   background-color: #e9edee;
 }
@@ -125,7 +147,7 @@ body::-webkit-scrollbar-thumb {
 .card-img {
   border-radius: 10px;
   width: 250px;
-  margin-left: 90px;
+  margin-left: 60px;
   height: 375px;
   object-fit: contain;
   background-color: #e1e1e1;
@@ -133,13 +155,13 @@ body::-webkit-scrollbar-thumb {
 
 .row-media {
   max-height: 250px;
-  margin-right: 10px;
+  /* margin-right: -60px; */
   border-radius: 5px;
 }
 
 .row-reco {
   max-height: 150px;
-  margin-right: 20px;
+  /* margin-right: -60px; */
   border-radius: 5px;
 }
 
@@ -164,6 +186,52 @@ body::-webkit-scrollbar-thumb {
 .overlay {
   height: 80vh;
 }
+.pagination {
+  padding-bottom: 30px;
+}
+
+h1 {
+  min-height: 1rem;
+  font-size: 2rem
+}
+
+h2 {
+  font-size: 1.71428571rem
+}
+
+h3 {
+  font-size: 1.28571429rem
+}
+
+h4 {
+  font-size: 1.07142857rem
+}
+
+h5 {
+  font-size: 1rem
+}
+
+h1,
+h2,
+h3,
+h4,
+h5 {
+  font-family: Lato, 'Helvetica Neue', Arial, Helvetica, sans-serif;
+  line-height: 1.28571429em;
+  margin: calc(2rem - .14285714em) 0 1rem;
+  font-weight: 700;
+  padding: 0
+}
+
+h1:first-child,
+h2:first-child,
+h3:first-child,
+h4:first-child,
+h5:first-child,
+p:first-child {
+  margin-top: 0
+}
+
 
 @media (min-width: 998px) {
   .content {
@@ -207,5 +275,12 @@ body::-webkit-scrollbar-thumb {
   .m-t {
     position: absolute;
     top: -300px;
+  }
+  .mtc {
+    text-align: center;
+  }
+
+  .mbtn {
+    display: none;
   }
 }

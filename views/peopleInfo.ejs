@@ -88,7 +88,7 @@
       </div>
 
       <div class="col-md-8">
-        <h1 class="text-dark text-bold mb-4"><%= info.name %></h1>
+        <h1 class="text-dark text-bold mb-4 mt-3"><%= info.name %></h1>
         <div>
           <h5 class="text-dark">Biography</h5>
           <p>
@@ -119,7 +119,7 @@
                     <a
                       href="/<% if (info.combined_credits.cast[i].media_type == 'tv') { %>tv<% } else { %>movie<% } %>/<%= info.combined_credits.cast[i].id %>-<%= kebabCase(info.combined_credits.cast[i].name || info.combined_credits.cast[i].title) %>"
                     >
-                      <p class="mt-1">
+                      <p class="mt-2">
                         <%= info.combined_credits.cast[i].name || info.combined_credits.cast[i].title %>
                       </p>
                     </a>
@@ -147,7 +147,7 @@
                     <a
                       href="/<% if (info.combined_credits.crew[i].media_type == 'tv') { %>tv<% } else { %>movie<% } %>/<%= info.combined_credits.crew[i].id %>-<%= kebabCase(info.combined_credits.crew[i].title || info.combined_credits.crew[i].name) %>"
                     >
-                      <p class="mt-1">
+                      <p class="mt-2">
                         <%= info.combined_credits.crew[i].title || info.combined_credits.crew[i].name %>
                       </p>
                     </a>

@@ -4,10 +4,18 @@
     content="More Movies is a website to see info, Netflix, Top Rated, Romance, Action, Horror and Documentaries Movies..."
   />
   <title>TV Shows Airing Today - More Movies</title>
+  <script>
+    function goBack() {
+      window.history.back()
+    }
+  </script>
 
   <body>
 
-    <h2 class="pl-3 mt-4">TV Shows Airing Today</h2>
+    <div class="pl-3 mt-4">
+      <button onclick="goBack()" class="btn btn-secondary">Go Back</button>
+      <h2>TV Shows Airing Today</h2>
+    </div>
 
     <div class="container">
       <div class="row p-3">
@@ -23,7 +31,7 @@
               alt="<%= info.results[i].name %>"
             />
             </a>
-            <div class="card-body">
+            <div class="card-body mtc">
               <h5 class="card-title text-truncate">
                 <a href=/tv/<%= info.results[i].id %>-<%= kebabCase(info.results[i].name) %>
                   ><%= info.results[i].name %>
