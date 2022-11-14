@@ -27,7 +27,7 @@
     <div class="row no-gutters">
       <div class="col-md-3">
         <a
-          href="/movie/<%= info.results[i].id %>-<%= kebabCase(info.results[i].title) %>"
+          href="/movie/<%= info.results[i].id %>/<%= kebabCase(info.results[i].title) %>"
         >
           <img
             src="<%= image + info.results[i].poster_path %>"
@@ -40,7 +40,7 @@
         <div class="card-body">
           <h5 class="card-title">
             <a
-              href="/movie/<%= info.results[i].id %>-<%= kebabCase(info.results[i].title) %>"
+              href="/movie/<%= info.results[i].id %>/<%= kebabCase(info.results[i].title) %>"
               ><%= info.results[i].title %>
             </a>
           </h5>

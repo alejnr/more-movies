@@ -22,7 +22,7 @@
         <% for( let i = 0; i < info.results.length; i++ ) { %>
 
           <div class="col-md-4 col-lg-3 mb-4">
-            <a href=/person/<%= info.results[i].id %>-<%= kebabCase(info.results[i].name) %>>
+            <a href=/person/<%= info.results[i].id %>/<%= kebabCase(info.results[i].name) %>>
               <img
                 class="card-img-top poster_path mt-3 mb-3"
                 src="<% if (info.results[i].profile_path) {  %>
@@ -36,7 +36,7 @@
             </a>
             <div class="card-body mtc">
               <h5 class="card-title text-truncate">
-                <a href=/person/<%= info.results[i].id %>-<%= kebabCase(info.results[i].name) %>
+                <a href=/person/<%= info.results[i].id %>/<%= kebabCase(info.results[i].name) %>
                   ><%= info.results[i].name %>
                 </a>
               </h5>
@@ -51,12 +51,12 @@
           <li class="page-item <% if (page <= 1) { %>
             disabled
           <% } %>">
-            <a class="page-link" href="/person/page=<%= page - 1 %>">Previous</a>
+            <a class="page-link" href="/person/page/<%= page - 1 %>">Previous</a>
           </li>
           <li class="page-item <% if (page == info.total_pages) { %>
             disabled
           <% } %>">
-            <a class="page-link" href="/person/page=<%= ++page %>">Next</a>
+            <a class="page-link" href="/person/page/<%= ++page %>">Next</a>
           </li>
         </ul>
     </nav>

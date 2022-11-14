@@ -24,7 +24,7 @@
     <div class="row no-gutters">
       <div class="col-md-3">
         <a
-          href="/person/<%= info.results[i].id %>-<%= kebabCase(info.results[i].name) %>"
+          href="/person/<%= info.results[i].id %>/<%= kebabCase(info.results[i].name) %>"
         >
           <img
             src="<% if (info.results[i].profile_path) {  %>
@@ -42,7 +42,7 @@
         <div class="card-body">
           <h5 class="card-title">
             <a
-              href="/person/<%= info.results[i].id %>-<%= kebabCase(info.results[i].name) %>"
+              href="/person/<%= info.results[i].id %>/<%= kebabCase(info.results[i].name) %>"
               ><%= info.results[i].name %>
             </a>
           </h5>
@@ -60,7 +60,7 @@
     <div class="row no-gutters">
       <div class="col-md-3">
         <a
-          href="/movie/<%= info.results[i].id %>-<%= kebabCase(info.results[i].title) %>"
+          href="/movie/<%= info.results[i].id %>/<%= kebabCase(info.results[i].title) %>"
         >
           <img
             src="<% if (info.results[i].poster_path) {  %>
@@ -78,7 +78,7 @@
         <div class="card-body">
           <h5 class="card-title">
             <a
-              href="/movie/<%= info.results[i].id %>-<%= kebabCase(info.results[i].title) %>"
+              href="/movie/<%= info.results[i].id %>/<%= kebabCase(info.results[i].title) %>"
               ><%= info.results[i].title %>
             </a>
           </h5>
@@ -101,7 +101,7 @@
     <div class="row no-gutters">
       <div class="col-md-3">
         <a
-          href="/tv/<%= info.results[i].id %>-<%= kebabCase(info.results[i].name) %>"
+          href="/tv/<%= info.results[i].id %>/<%= kebabCase(info.results[i].name) %>"
         >
           <img
             src="<% if (info.results[i].poster_path) {  %>
@@ -119,7 +119,7 @@
         <div class="card-body">
           <h5 class="card-title">
             <a
-              href="/tv/<%= info.results[i].id %>-<%= kebabCase(info.results[i].name) %>"
+              href="/tv/<%= info.results[i].id %>/<%= kebabCase(info.results[i].name) %>"
               ><%= info.results[i].name %>
             </a>
           </h5>
@@ -143,7 +143,7 @@
       <li class="page-item <% if (page <= 1) { %> disabled <% } %>">
         <a
           class="page-link"
-          href="/searchq=<%= searchQuery %>/page=<%= page - 1 %>"
+          href="/search/<%= searchQuery %>/page/<%= page - 1 %>"
         >
           Previous
         </a>
@@ -153,7 +153,7 @@
       >
         <a
           class="page-link"
-          href="/searchq=<%= searchQuery %>/page=<%= ++page %>"
+          href="/search/<%= searchQuery %>/page/<%= ++page %>"
         >
           Next
         </a>

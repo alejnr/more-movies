@@ -146,7 +146,7 @@
             <% for (let i = 0; i < info.credits.cast.length; i++) { %>
             <figure class="p-2">
               <a
-                href="/person/<%= info.credits.cast[i].id %>-<%= kebabCase(info.credits.cast[i].name) %>"
+                href="/person/<%= info.credits.cast[i].id %>/<%= kebabCase(info.credits.cast[i].name) %>"
               >
                 <img
                   class="row-cast"
@@ -160,7 +160,7 @@
               </a>
               <figcaption class="mt-2">
                 <a
-                  href="/person/<%= info.credits.cast[i].id %>-<%= kebabCase(info.credits.cast[i].name) %>"
+                  href="/person/<%= info.credits.cast[i].id %>/<%= kebabCase(info.credits.cast[i].name) %>"
                 >
                   <strong class="">
                     <%= info.credits.cast[i].original_name %>
@@ -199,7 +199,7 @@
             %> <% if (info.recommendations.results[i].backdrop_path) { %>
             <figure>
               <a
-                href="/movie/<%= info.recommendations.results[i].id %>-<%= kebabCase(info.recommendations.results[i].title) %>"
+                href="/movie/<%= info.recommendations.results[i].id %>/<%= kebabCase(info.recommendations.results[i].title) %>"
                 ><img
                   class="row-reco"
                   src="<%= image + info.recommendations.results[i].backdrop_path %>"
@@ -207,7 +207,7 @@
               /></a>
               <figcaption>
                 <a
-                  href="/movie/<%= info.recommendations.results[i].id %>-<%= kebabCase(info.recommendations.results[i].title) %>"
+                  href="/movie/<%= info.recommendations.results[i].id %>/<%= kebabCase(info.recommendations.results[i].title) %>"
                 >
                   <p class="mt-2">
                     <%= info.recommendations.results[i].title %>
@@ -256,7 +256,7 @@
             <% for( let i = 0; i < info.keywords.keywords.length; i++ ) { %>
             <li class="list-inline-item my-1">
               <a
-                href="/keyword/<%= info.keywords.keywords[i].id %>-<%= kebabCase(info.keywords.keywords[i].name) %>/movie"
+                href="/keyword/<%= info.keywords.keywords[i].id %>/<%= kebabCase(info.keywords.keywords[i].name) %>/movie"
               >
                 <span class="bg-secondary p-1 rounded text-dark">
                   <%= info.keywords.keywords[i].name %>

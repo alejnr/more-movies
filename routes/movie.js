@@ -21,7 +21,7 @@ function timeConvert(n) {
   return rhours + 'h ' + rminutes + 'm'
 }
 
-router.get('/movie/:movieID-:movieName', function (req, res) {
+router.get('/movie/:movieID/:movieName', function (req, res) {
   const requestID = req.params.movieID
 
   rp(

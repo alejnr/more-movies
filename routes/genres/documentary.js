@@ -10,7 +10,7 @@ const apiKEY = process.env.API_KEY
 
 module.exports = {
   redirect: function (req, res) {
-    res.redirect('/documentary/page=1')
+    res.redirect('/documentary/page/1')
   },
   request: function (req, res) {
     const page = req.params.pageNumber

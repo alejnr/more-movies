@@ -11,7 +11,7 @@ const apiKEY = process.env.API_KEY
 module.exports = {
   redirect: function (req, res) {
     const searchQuery = kebabCase(req.body.query)
-    res.redirect(`/searchq=${searchQuery}/page=1`)
+    res.redirect(`/search/${searchQuery}/page/1`)
   },
   request: function (req, res) {
     const searchQuery = req.params.querySearch

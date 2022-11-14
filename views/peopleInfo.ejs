@@ -104,7 +104,7 @@
           <div class="rows">
             <% for( let i = 0; i < info.combined_credits.cast.length; i++ ) { %>
                 <figure>
-                  <a href="/<% if (info.combined_credits.cast[i].media_type == 'tv') { %>tv<% } else { %>movie<% } %>/<%= info.combined_credits.cast[i].id %>-<%= kebabCase(info.combined_credits.cast[i].name || info.combined_credits.cast[i].title) %>">
+                  <a href="/<% if (info.combined_credits.cast[i].media_type == 'tv') { %>tv<% } else { %>movie<% } %>/<%= info.combined_credits.cast[i].id %>/<%= kebabCase(info.combined_credits.cast[i].name || info.combined_credits.cast[i].title) %>">
                     <img
                     class="known_for"
                     src="<% if (info.combined_credits.cast[i].poster_path) {  %>
@@ -117,7 +117,7 @@
                   </a>
                   <figcaption>
                     <a
-                      href="/<% if (info.combined_credits.cast[i].media_type == 'tv') { %>tv<% } else { %>movie<% } %>/<%= info.combined_credits.cast[i].id %>-<%= kebabCase(info.combined_credits.cast[i].name || info.combined_credits.cast[i].title) %>"
+                      href="/<% if (info.combined_credits.cast[i].media_type == 'tv') { %>tv<% } else { %>movie<% } %>/<%= info.combined_credits.cast[i].id %>/<%= kebabCase(info.combined_credits.cast[i].name || info.combined_credits.cast[i].title) %>"
                     >
                       <p class="mt-2">
                         <%= info.combined_credits.cast[i].name || info.combined_credits.cast[i].title %>
@@ -132,7 +132,7 @@
               <% if (info.combined_credits.crew[i].poster_path) { %>
                 <figure>
                   <a
-                    href="/<% if (info.combined_credits.crew[i].media_type == 'tv') { %>tv<% } else { %>movie<% } %>/<%= info.combined_credits.crew[i].id %>-<%= kebabCase(info.combined_credits.crew[i].title || info.combined_credits.crew[i].name) %>">
+                    href="/<% if (info.combined_credits.crew[i].media_type == 'tv') { %>tv<% } else { %>movie<% } %>/<%= info.combined_credits.crew[i].id %>/<%= kebabCase(info.combined_credits.crew[i].title || info.combined_credits.crew[i].name) %>">
                     <img
                       class="known_for"
                       src="<% if (info.combined_credits.crew[i].poster_path) {  %>
@@ -145,7 +145,7 @@
                   </a>
                   <figcaption>
                     <a
-                      href="/<% if (info.combined_credits.crew[i].media_type == 'tv') { %>tv<% } else { %>movie<% } %>/<%= info.combined_credits.crew[i].id %>-<%= kebabCase(info.combined_credits.crew[i].title || info.combined_credits.crew[i].name) %>"
+                      href="/<% if (info.combined_credits.crew[i].media_type == 'tv') { %>tv<% } else { %>movie<% } %>/<%= info.combined_credits.crew[i].id %>/<%= kebabCase(info.combined_credits.crew[i].title || info.combined_credits.crew[i].name) %>"
                     >
                       <p class="mt-2">
                         <%= info.combined_credits.crew[i].title || info.combined_credits.crew[i].name %>

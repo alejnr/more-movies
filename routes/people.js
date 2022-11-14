@@ -12,7 +12,7 @@ const getAge = (birthDate) =>
 
 module.exports = {
   redirect: function (req, res) {
-    res.redirect('/person/page=1')
+    res.redirect('/person/page/1')
   },
   request: function (req, res) {
     const page = req.params.pageNumber

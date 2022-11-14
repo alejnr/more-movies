@@ -21,7 +21,7 @@ function timeConvert(n) {
 
 module.exports = {
   redirect: function (req, res) {
-    res.redirect('/tv/page=1')
+    res.redirect('/tv/page/1')
   },
   request: function (req, res) {
     const page = req.params.pageNumber
