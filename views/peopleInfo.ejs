@@ -25,41 +25,41 @@
           <% if (info.external_ids.facebook_id) { %>
             <span class="pr-3">
               <a href="https://www.facebook.com/<%= info.external_ids.facebook_id %>" target="_blank" rel="noopener noreferrer">
-                <i class="fab fa-facebook fa-2x text-dark"></i>
+                <i class="fab fa-facebook fa-2x"></i>
               </a>
             </span>
           <% } %>
           <% if (info.external_ids.twitter_id) { %>
             <span class="pr-3">
               <a href="https://twitter.com/<%= info.external_ids.twitter_id %>" target="_blank" rel="noopener noreferrer">
-                <i class="fab fa-twitter fa-2x text-dark"></i>
+                <i class="fab fa-twitter fa-2x"></i>
               </a>
             </span>
           <% } %>
           <% if (info.external_ids.instagram_id) { %>
             <span class="pr-3">
               <a href="https://instagram.com/<%= info.external_ids.instagram_id %>" target="_blank" rel="noopener noreferrer">
-                <i class="fab fa-instagram fa-2x text-dark"></i>
+                <i class="fab fa-instagram fa-2x"></i>
               </a>
             </span>
           <% } %>
           <% if (info.external_ids.imdb_id) { %>
             <span class="pr-3">
               <a href="https://www.imdb.com/name/<%= info.external_ids.imdb_id %>" target="_blank" rel="noopener noreferrer">
-                <i class="fab fa-imdb fa-2x text-dark"></i>
+                <i class="fab fa-imdb fa-2x"></i>
               </a>
             </span>
           <% } %>
           <% if (info.homepage) { %>
             <span class="pr-3">
               <a href="<%= info.homepage %>" target="_blank" rel="noopener noreferrer">
-                <i class="fas fa-link fa-2x text-dark"></i>
+                <i class="fas fa-link fa-2x"></i>
               </a>
             </span>
           <% } %>
         </div>
         <div>
-          <h4 class="text-dark py-3">Personal Info</h4>
+          <h4 class="py-3 text-dark">Personal Info</h4>
           <strong>Known For</strong>
           <p><%= info.known_for_department %></p>
           <strong>Gender</strong>
@@ -88,7 +88,7 @@
       </div>
 
       <div class="col-md-8">
-        <h1 class="text-dark text-bold mb-4 mt-3"><%= info.name %></h1>
+        <h1 class=" text-bold mb-4 mt-3"><%= info.name %></h1>
         <div>
           <h5 class="text-dark">Biography</h5>
           <p>
@@ -100,7 +100,7 @@
         </p>
         </div>
         <div class="my-4">
-          <h5 class="text-dark">Known For</h5>
+          <h5 class="">Known For</h5>
           <div class="rows">
             <% for( let i = 0; i < info.combined_credits.cast.length; i++ ) { %>
                 <figure>
@@ -160,7 +160,7 @@
 
         <div class="my-4">
           <% if (info.images.profiles.length > 1) { %>
-            <h5 class="text-dark">Photos</h5>
+            <h5 class="">Photos</h5>
             <div class="rows">
               <% for (let i = 0; i < info.images.profiles.length; i++) { %> 
                 <figure>

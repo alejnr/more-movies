@@ -9,11 +9,11 @@ body {
   padding: 0;
   overflow-x: hidden;
   min-width: 320px;
-  background: #FFF;
+  background: #0F0F0F;
   font-family: Lato, 'Helvetica Neue', Arial, Helvetica, sans-serif;
   font-size: 14px;
   line-height: 1.4285em;
-  color: rgba(0, 0, 0, .87);
+  color: #ffffff;
 }
 
 body::-webkit-scrollbar {
@@ -39,11 +39,15 @@ figure {
 
 
 figure p {
-  color: #495057;
+  color: #ffffff;
 }
 
-figure a:hover {
+/* figure a:hover {
   color: #495057;
+} */
+
+.dark {
+  background: #181A1B;
 }
 
 .col > img {
@@ -66,7 +70,7 @@ figure a:hover {
   position: absolute;
   left: 20px;
   bottom: 100px;
-  color: #fff;
+  color: #ffffff;
   padding: 10px;
   font-size: 15px;
 }
@@ -78,8 +82,16 @@ figure a:hover {
 .overlay {
   position: absolute;
   width: 100%;
-  background: #1a1a1b;
+  background: #0F0F0F;
   opacity: 0.8;
+  height: 50%;
+}
+
+.overlay-2 {
+  position: absolute;
+  width: 100%;
+  background: #0F0F0F;
+  opacity: 0.3;
   height: 50%;
 }
 
@@ -246,9 +258,9 @@ p:first-child {
   }
   .poster_path:hover,
   .row-search:hover {
-    -webkit-box-shadow: 3px 3px 5px 6px #ccc;
-    -moz-box-shadow: 3px 3px 5px 6px #ccc;
-    box-shadow: 3px 3px 5px 6px #ccc;
+    -webkit-box-shadow: 3px 3px 5px 6px #596466;
+    -moz-box-shadow: 3px 3px 5px 6px #596466;
+    box-shadow: 3px 3px 5px 6px #596466;
   }
 }
 
